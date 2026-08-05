@@ -17,8 +17,23 @@ console.log(products);
 
   return (
     <main>
-      <h1>Products</h1>
-      <div>{products.map((product) => <h2 key={product.id}>{product.title} - {product.category?.name}</h2>)}</div>
+
+      <header>
+        Header with "Add Product" button
+      </header>
+
+      <section>
+        Product count section
+      </section>
+
+      <section>
+        Filter section
+      </section>
+
+      <section>
+        Product table section
+      </section>
+
     </main>
   );
 }
