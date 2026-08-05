@@ -1,6 +1,5 @@
 
 # Agile methods project for group 6
-
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 This project uses [json-server](https://github.com/typicode/json-server/tree/v0.17.4) to mock a backend API.
@@ -8,15 +7,22 @@ This project uses [json-server](https://github.com/typicode/json-server/tree/v0.
 Data in the json for the server is from [dummyjson.com](https://dummyjson.com/docs/products) but modified to fit the needs of this project. Most of the endpoints mirrors those in that documentation.
 
 ## Group 6 members
-
 * Georgij Li
 * Leo Leksell
 * Mervin Bratic
 * Wilmer Kindstedt
 
+## Definition of Done
+* The code is fully completed and understandable.
+* No Typescript compilation errors.
+* The function is tested and works for everyone.
+* The function works with the rest of the application.
+* It's been merged to the "main" branch.
+* No known severe errors remain.
+* The Github Issue is updated.
+
 
 ## Getting Started
-
 First, install the dependencies:
 
 ```bash
