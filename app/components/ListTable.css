@@ -1,0 +1,70 @@
+.ListTable{
+    width: 100%;
+    text-align: left;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.263);
+    border-radius: 8px;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+.ListTable td, .ListTable th{
+    padding:12px;
+}
+
+.ListTable thead{
+    background-color: #c9c9c94d;
+}
+
+.ListTable__Stock{
+    display: flex;
+    gap: 4px;
+}
+
+.ListTable__Title{
+     display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.ListTable__Title img{
+border: 1px solid #0000003d;
+  border-radius: 4px;
+}
+
+.ListTable__Sku{
+    font-size: 0.8rem;
+    color: grey;
+}
+
+.ListTable__ListItem-in-stock{
+    color: green;
+    font-weight: bolder;
+}
+
+.ListTable__ListItem-low-stock{
+    color: orange;
+    font-weight: bolder;
+}
+
+.ListTable__ListItem-out-of-stock{
+    color: red;
+    font-weight: bolder;
+}
+
+.ListTable__actions{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.ListTable__actions img{
+    cursor: pointer;
+    filter: invert(1);
+}
+
+.ListTable__actions button:hover{
+    cursor: pointer;
+}
