@@ -1,4 +1,3 @@
-import { urlToHttpOptions } from "url";
 import ListTable from "./components/ListTable";
 import { getProducts } from "./lib/products";
 import type { ProductsResponse } from "./types";
