@@ -5,6 +5,7 @@ type SearchParams = {
   _sort?: string
   _order?: string
   _expand?: string
+  _page?:string
 }
 
 export async function getProducts(options?: SearchParams): Promise<ProductsResponse> {
