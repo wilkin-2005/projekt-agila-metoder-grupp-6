@@ -1,3 +1,4 @@
+import FilterSection from "./components/FilterSection";
 import ListTable from "./components/ListTable";
 import type { ProductsResponse } from "./types";
 
@@ -19,6 +20,7 @@ console.log(products);
   return (
     <main>
       <h1>Products</h1>
+      <FilterSection />
       <ListTable data={products} columns={["title","brand","category","stock", "price"]}/>
       <div>{products.map((product) => <h2 key={product.id}>{product.title} - {product.category?.name}</h2>)}</div>
     </main>
