@@ -4,13 +4,10 @@ import './Pagination.css';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 
-export default function Pagination({page}: {page:number}){
+export default function Pagination({page, pages}: {page:number,pages:number}){
     const currentPage = page;
     const router = useRouter();
     const pathname = usePathname();
-    const product_count = 100;
-    const products_per_page = 6;
-    const pages = Math.ceil(product_count/products_per_page);
     let arr:number[] = [];
     arr.length = pages;
     arr.fill(0);

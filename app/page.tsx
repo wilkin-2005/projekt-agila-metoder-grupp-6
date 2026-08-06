@@ -34,7 +34,7 @@ export default async function Home({searchParams}: {searchParams?: Promise<{
 
       <section>
         <ListTable data={products} columns={["title","brand","category","stock", "price"]}/>
-        <Pagination page={parseInt(_page,10)}/>
+        <Pagination page={parseInt(_page,10)} pages={pages}/>
       </section>
       
     </main>
