@@ -1,0 +1,36 @@
+.filter-section {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid lightgray;
+    border-radius: 8px;
+}
+
+.filter-form {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 1rem;
+    width: 100%;
+}
+
+.filter-form > * {
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    padding: 0.25rem;
+}
+
+.filter-button {
+    display: inline-flex;
+    gap: 0.5rem;
+
+    &:hover, &:focus-visible {
+        cursor: pointer;
+    }
+}
+
+.form-search {
+    width: 100%;
+}
