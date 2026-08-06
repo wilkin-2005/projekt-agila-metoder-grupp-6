@@ -1,0 +1,29 @@
+.Pagination{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding:1rem;
+}
+
+.Pagination__Item{
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.194);
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+
+.Pagination__Item--current{
+    background-color: rgb(71, 71, 71);
+    color: white;
+}
+
+.Pagination__Item p{
+    transform: translateY(-1px);
+}

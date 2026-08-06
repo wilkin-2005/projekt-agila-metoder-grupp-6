@@ -1,13 +1,8 @@
 .ListTable{
     width: 100%;
     text-align: left;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid rgba(0, 0, 0, 0.263);
-    border-radius: 8px;
     border-collapse: separate;
     border-spacing: 0;
-    overflow: hidden;
 }
 
 .ListTable td, .ListTable th{
