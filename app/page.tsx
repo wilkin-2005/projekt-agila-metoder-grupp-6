@@ -1,3 +1,4 @@
+import ListTable from "./components/ListTable";
 import type { ProductsResponse } from "./types";
 
 const API_URL = "http://localhost:4000";
@@ -21,7 +22,7 @@ console.log(products);
       <header>
         Header with "Add Product" button
       </header>
-
+      
       <section>
         Product count section
       </section>
@@ -31,9 +32,9 @@ console.log(products);
       </section>
 
       <section>
-        Product table section
+        <ListTable data={products} columns={["title","brand","category","stock", "price"]}/>
       </section>
-
+      
     </main>
   );
 }
