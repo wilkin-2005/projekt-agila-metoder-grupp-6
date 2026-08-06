@@ -27,3 +27,8 @@
 .Pagination__Item p{
     transform: translateY(-1px);
 }
+
+.Pagination__ExtraPage{
+    display: flex;
+    align-items: flex-end;
+}

@@ -3,6 +3,7 @@
 import './Pagination.css';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
+import { Fragment } from 'react/jsx-runtime';
 
 export default function Pagination({page, pages}: {page:number,pages:number}){
     const currentPage = page;
@@ -12,16 +13,21 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
     arr.length = pages;
     arr.fill(0);
 
-    const visiblePagesOffsetFromMiddle = 2;
-    const offsetStart = currentPage <= visiblePagesOffsetFromMiddle+1 ? (visiblePagesOffsetFromMiddle+2)-currentPage : 0;
-    const offsetEnd = currentPage > pages-(visiblePagesOffsetFromMiddle+1) ? visiblePagesOffsetFromMiddle-(pages-currentPage)+1 : 0;
+    const visiblePagesOffsetFromMiddle = 2; // If you change this value you will need to change values in other places below to make it work
+
+    const reduceOffsetStart = currentPage-visiblePagesOffsetFromMiddle === 2 ? 1: 0;
+    const reduceOffsetEnd = currentPage+visiblePagesOffsetFromMiddle === pages-1 ? 1 : 0;
+    const offsetStart = currentPage <= visiblePagesOffsetFromMiddle ? (visiblePagesOffsetFromMiddle+1)-currentPage : 0;
+    const offsetEnd = currentPage > pages-(visiblePagesOffsetFromMiddle+1) ? visiblePagesOffsetFromMiddle-(pages-currentPage) : 0;
 
     return <ul className='Pagination'>
         {arr.map(((v,i) =>{
-            const pageVisible = (currentPage-(i+1) <= visiblePagesOffsetFromMiddle+offsetEnd && currentPage-(i+1) >= 0) || (currentPage-(i+1) >= -visiblePagesOffsetFromMiddle-offsetStart && currentPage-(i+1) <= 0)
+            const pageVisible = (currentPage-(i+1) <= visiblePagesOffsetFromMiddle+offsetEnd-reduceOffsetEnd && currentPage-(i+1) >= 0) || (currentPage-(i+1) >= -visiblePagesOffsetFromMiddle-offsetStart+reduceOffsetStart && currentPage-(i+1) <= 0)
+            
             const firstPageExtraShouldBeVisible = !pageVisible && i+1 === 1;
             const lastPageExtraShouldBeVisible = !pageVisible && i+1 === pages;
-            return pageVisible || firstPageExtraShouldBeVisible || lastPageExtraShouldBeVisible?
+            return pageVisible || firstPageExtraShouldBeVisible || lastPageExtraShouldBeVisible?<Fragment key={i+1}>
+                {lastPageExtraShouldBeVisible && currentPage+visiblePagesOffsetFromMiddle !== pages-1 ? <li className='Pagination__ExtraPage'><p>...</p></li>:null}
          <li key={i+1} onClick={() =>{if(currentPage === i+1) return;
                     const params = new URLSearchParams();
                     params.set("page", (i+1).toString());
@@ -30,6 +36,8 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
          className={`Pagination__Item ${currentPage === i+1 ? 'Pagination__Item--current': ''}`}>
             
             <p>{i+1}</p>
-        </li>: null}))}
+        </li>
+        {firstPageExtraShouldBeVisible && currentPage-visiblePagesOffsetFromMiddle !== 2 ? <li className='Pagination__ExtraPage'><p>...</p></li>:null}
+        </Fragment>: null}))}
     </ul>
 }
