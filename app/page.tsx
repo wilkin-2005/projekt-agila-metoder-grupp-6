@@ -15,7 +15,7 @@ export default async function Home({searchParams}: {searchParams?: Promise<{
   // in this fetch we sort using _sort and _order and we limit the number of products using _limit
   // we also use _expand to get the relational category data
   // we can use the other destructed variables like page, total and so on to create pagination or show info
-  const { products, total, page, pages, limit }: ProductsResponse = await getProducts({ _limit: '6',_page })
+  const { products, total, page, pages, limit }: ProductsResponse = await getProducts({ _limit: '6',_page: _page })
 
   return (
     <main>
