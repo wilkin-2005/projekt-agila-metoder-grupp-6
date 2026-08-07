@@ -1,7 +1,10 @@
 "use client"
 import './ListTable.css'
+import { deleteProduct } from '../lib/products';
+import { useState } from 'react';
 
 export default function ListTable({data,columns}: {data:Record<string, any>[], columns:string[]}){
+    const [deletedProducts, setDeletedProducts] = useState<Record<string, boolean>>({})
     return <table className="ListTable">
         <thead>
             <tr>
@@ -24,14 +27,24 @@ export default function ListTable({data,columns}: {data:Record<string, any>[], c
 
             {
                 data.map(d => 
-                    <tr key={d.id} >
+                    <tr key={d.id} className={`ListTable__ListItem ${deletedProducts[d.id] ? 'ListTable__ListItem--deleted' : ''}`}>
                         {columns.map((column => 
                             <td key={column}>{!mapper ?  d[column]: mapper(d, column)}</td>
                         ))}
                         <td key={"actions"}>
                             <div className="ListTable__actions">
                                 <img width={23} onClick={() => console.log("edit")} src="edit.png"></img>
-                                <img width={23} onClick={() => console.log("delete")} src="delete.png"></img>
+                                <img width={23} onClick={async () => {
+                                    try {
+                                        await deleteProduct(d.id)
+                                        setDeletedProducts((obj) => ({...obj, [d.id]: true}));   
+                                    } catch (error) {
+                                        if(error instanceof Error){
+                                            console.error(error.message)
+                                        }
+                                    }
+                                }
+                                } src="delete.png"></img>
                         </div>
                     </td>
                     </tr>

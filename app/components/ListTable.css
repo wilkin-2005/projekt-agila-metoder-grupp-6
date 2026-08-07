@@ -49,6 +49,10 @@ border: 1px solid #0000003d;
     font-weight: bolder;
 }
 
+.ListTable__ListItem--deleted{
+    display: none;
+}
+
 .ListTable__actions{
     display: flex;
     gap: 8px;
