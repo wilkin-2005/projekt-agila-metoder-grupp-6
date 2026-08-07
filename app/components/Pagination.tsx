@@ -15,17 +15,14 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
 
     const offset = 2;
 
-    const reduceOffsetStart = currentPage-offset === 2 ? 1: 0;
-    const reduceOffsetEnd = currentPage+offset === pages-1 ? 1 : 0; 
+    const extraOffsetStart = currentPage < offset+1 ? (offset+1)-currentPage : 0; // add extra during first pages to keep number of pages the same
+    const extraOffsetEnd = currentPage > pages-(offset+1) ? offset-(pages-currentPage) : 0; // add extra during last pages to keep number of pages the same
 
-    const extraOffsetStart = currentPage <= offset+1 ? (offset+1)-currentPage : 0;
-    const extraOffsetEnd = currentPage > pages-(offset+1) ? offset-(pages-currentPage) : 0;
+    const extraStart = currentPage-offset < 2 ? 1 : 0; // for when first page is not visible
+    const extraEnd = currentPage+offset > pages-1 ? 1 : 0; // for when last page is not visible
 
-    const extraStart = currentPage-offset <= 2; 
-    const extraEnd = currentPage+offset >= pages-1;
-
-    const extraOffsetLeft = extraOffsetEnd-reduceOffsetEnd+Number(extraEnd);
-    const extraOffsetRight = (extraOffsetStart-reduceOffsetStart+Number(extraStart));
+    const extraOffsetLeft = extraOffsetEnd+extraEnd;
+    const extraOffsetRight = extraOffsetStart+extraStart;
 
     const pageLimitStart = currentPage - offset - extraOffsetLeft;
     const pageLimitEnd = currentPage + offset + extraOffsetRight;
