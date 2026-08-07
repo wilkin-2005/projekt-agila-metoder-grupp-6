@@ -1,6 +1,7 @@
 import FilterSection from "./components/FilterSection";
 import ListTable from "./components/ListTable";
 import Pagination from "./components/Pagination";
+import StockOverview from "@/app/components//stock-overview/stock-overview";
 import { getProducts } from "./lib/products";
 import type { ProductsResponse } from "./types";
 
@@ -24,9 +25,8 @@ export default async function Home({searchParams}: {searchParams?: Promise<{
         Header with "Add Product" button
       </header>
       
-      <section>
-        Product count section
-      </section>
+      {/* Stock overview section */}
+      <StockOverview />
 
       <section>
         Filter section
