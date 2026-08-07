@@ -12,11 +12,6 @@ export default async function Home() {
 
   return (
     <main>
-
-      <header>
-        Header with "Add Product" button
-      </header>
-      
       <section>
         Product count section
       </section>
@@ -26,9 +21,9 @@ export default async function Home() {
       </section>
 
       <section>
-        <ListTable data={products} columns={["title","brand","category","stock", "price"]}/>
+        <ListTable data={products} columns={["title", "brand", "category", "stock", "price"]} />
       </section>
-      
+
     </main>
   );
 }
