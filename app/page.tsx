@@ -1,6 +1,7 @@
 import FilterSection from "./components/FilterSection";
 import ListTable from "./components/ListTable";
 import Pagination from "./components/Pagination";
+import StockOverview from "@/app/components//stock-overview/stock-overview";
 import { getProducts } from "./lib/products";
 import type { ProductsResponse } from "./types";
 
@@ -20,14 +21,14 @@ export default async function Home({searchParams}: {searchParams?: Promise<{
   return (
     <main>
       <section>
-        Product count section
+        <StockOverview />
       </section>
 
-      <section>
+      <section className="centered-section">
         Filter section
       </section>
 
-      <section>
+      <section className="centered-section">
         <ListTable data={products} columns={["title","brand","category","stock", "price"]}/>
         <Pagination page={parseInt(_page,10)} pages={pages}/>
       </section>
