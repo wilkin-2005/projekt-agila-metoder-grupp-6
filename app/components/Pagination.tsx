@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import { Fragment } from 'react/jsx-runtime';
 
 export default function Pagination({page, pages}: {page:number,pages:number}){
-    pages = 3;
     const currentPage = page;
     const router = useRouter();
     const pathname = usePathname();
