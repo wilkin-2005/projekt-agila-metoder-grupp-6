@@ -1,7 +1,5 @@
 
-import Image from "next/image";
 import "./stock-overview.css"
-
 
 // Stock status overview-compontent. Formerly known as "product count section"
 export default function StockOverview()

@@ -25,14 +25,15 @@ export default async function Home({searchParams}: {searchParams?: Promise<{
         Header with "Add Product" button
       </header>
       
-      {/* Stock overview section */}
-      <StockOverview />
-
       <section>
+        <StockOverview />
+      </section>
+
+      <section className="centered-section">
         Filter section
       </section>
 
-      <section>
+      <section className="centered-section">
         <ListTable data={products} columns={["title","brand","category","stock", "price"]}/>
         <Pagination page={parseInt(_page,10)} pages={pages}/>
       </section>

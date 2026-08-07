@@ -1,5 +1,9 @@
 
 .stock-overview-section {
+    max-width: 1080px;
+    margin-inline: auto;
+    margin-block: 1rem;
+
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
