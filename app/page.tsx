@@ -19,11 +19,6 @@ export default async function Home({searchParams}: {searchParams?: Promise<{
 
   return (
     <main>
-
-      <header>
-        Header with "Add Product" button
-      </header>
-      
       <section>
         Product count section
       </section>
@@ -36,7 +31,7 @@ export default async function Home({searchParams}: {searchParams?: Promise<{
         <ListTable data={products} columns={["title","brand","category","stock", "price"]}/>
         <Pagination page={parseInt(_page,10)} pages={pages}/>
       </section>
-      
+
     </main>
   );
 }
