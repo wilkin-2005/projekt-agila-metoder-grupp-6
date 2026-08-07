@@ -18,8 +18,8 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
     const extraOffsetStart = currentPage < offset+1 ? (offset+1)-currentPage : 0; // add extra during first pages to keep number of pages the same
     const extraOffsetEnd = currentPage > pages-(offset+1) ? offset-(pages-currentPage) : 0; // add extra during last pages to keep number of pages the same
 
-    const extraStart = currentPage-offset < 2 ? 1 : 0; // for when first page is not visible
-    const extraEnd = currentPage+offset > pages-1 ? 1 : 0; // for when last page is not visible
+    const extraStart = currentPage-offset < 2 ? 1 : 0; // for when first page is included in the beginning
+    const extraEnd = currentPage+offset > pages-1 ? 1 : 0; // for when last page is included in the end
 
     const extraOffsetLeft = extraOffsetEnd+extraEnd;
     const extraOffsetRight = extraOffsetStart+extraStart;
