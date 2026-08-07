@@ -1,0 +1,45 @@
+
+.stock-overview-section {
+    max-width: 1080px;
+    margin-inline: auto;
+    margin-block: 1rem;
+
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+    background-color: var(--surface-page);
+    padding: 0;
+
+    h3 {
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weight-medium);
+        text-transform: uppercase;
+        color: var(--text-muted);
+    }
+    
+    .data-card {
+        padding: 1rem;
+        background-color: var(--surface-primary);
+
+        border: 2px solid var(--border-default);
+        border-radius: var(--radius-md);
+    }
+}
+
+.data--icon {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+
+    /* TIPS! https://tailwindcss.com/docs/colors */
+    &.products-amount { /* #615fff */ color: var(--color-indigo-500); }
+
+    &.in-stock-amount { /* #008235 */ color: var(--color-green-700); }
+
+    &.low-stock-amount { /* #e17100 */ color: var(--color-amber-600); }
+
+    &.out-of-stock-amount { /* #fb2c36 */ color: var(--color-red-500); }
+}
