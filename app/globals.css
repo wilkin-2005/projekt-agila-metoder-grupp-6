@@ -82,3 +82,46 @@ body {
   margin-inline: auto;
   margin-block: 1rem;
 }
+
+.page-header {
+  background-color: var(--surface-primary);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid var(--border-strong);
+  padding-block: 1.5rem;
+
+  .wrapper {
+    flex: 1;
+    max-width: 1080px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .heading {
+      line-height: var(--line-height-tight);
+
+      h1 {
+        font-weight: var(--font-weight-semibold);
+        font-size: var(--font-size-xl);
+      }
+    }
+
+    button {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.5rem;
+      padding-inline: 1rem;
+      background-color: var(--color-indigo-500);
+      border-radius: var(--radius-md);
+      color: var(--color-white);
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.95;
+    }
+  }
+}
