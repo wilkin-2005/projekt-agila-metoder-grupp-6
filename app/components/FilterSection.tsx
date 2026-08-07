@@ -1,5 +1,8 @@
+
 import "./FilterSection.css";
 
+
+// Filter section component
 export default function FilterSection() {
     return (
     <section className="filter-section">
