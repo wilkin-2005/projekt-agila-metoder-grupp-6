@@ -19,8 +19,11 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
     const extraOffsetStart:number = currentPage < offset+1 ? (offset+1)-currentPage : 0; // add extra pages to the right during first pages to keep number of pages within offset the same
     const extraOffsetEnd:number = currentPage > pages-(offset+1) ? offset-(pages-currentPage) : 0; // add extra pages to the left during last pages to keep number of pages within offset the same
 
-    const pageLimitStart:number = currentPage - offset - extraOffsetEnd;
-    const pageLimitEnd:number = currentPage + offset + extraOffsetStart;
+    const offsetLeft = offset+extraOffsetEnd;
+    const offsetRight = offset+extraOffsetStart;
+
+    const pageLimitStart:number = currentPage - offsetLeft;
+    const pageLimitEnd:number = currentPage + offsetRight;
 
     return <ul className='Pagination'>
                 {currentPage > 1 ?
