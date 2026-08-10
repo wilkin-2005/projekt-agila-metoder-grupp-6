@@ -26,15 +26,14 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
     const pageLimitEnd:number = currentPage + offsetRight;
 
     return <ul className='Pagination'>
-                {currentPage > 1 ?
                     <li className='Pagination__Item' onClick={() => {
+                        if(currentPage === 1) return;
                         const params = new URLSearchParams();
                         params.set("page", (currentPage-1).toString());
                         router.push(pathname + '?' +params.toString());
                     }}>
                         <ChevronLeft/>
-                    </li> : null
-                }
+                    </li>
                 {arr.map(((v,i) =>{ 
                     const pageVisible = (((i+1) >= pageLimitStart) && ((i+1) <= pageLimitEnd))
                     
@@ -65,13 +64,13 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
                     </Fragment> : null
                     }))
                 }
-                {currentPage < pages ? 
                 <li className='Pagination__Item' onClick={() => {
+                    if(currentPage === pages) return;
                     const params = new URLSearchParams();
                     params.set("page", (currentPage+1).toString());
                     router.push(pathname + '?' +params.toString());
                 }}>
                     <ChevronRight/> 
-                </li> : null}
+                </li>
         </ul>
 }
