@@ -34,13 +34,24 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
                     }}>
                         <ChevronLeft/>
                     </li>
+                    <li 
+                     className={`Pagination__Item ${pageLimitStart < 2 ? "Pagination__Item--hidden" : ""}`}
+                     onClick={() => {
+                        if(currentPage === 1) return;
+                        const params = new URLSearchParams();
+                        params.set("page", (1).toString());
+                        router.push(pathname + '?' +params.toString());
+                    }}>1</li>
+                    <li className={`Pagination__ExtraPage ${pageLimitStart <= 2 ? "Pagination__ExtraPage--hidden" : ""}`}>
+                        <p>...</p>
+                    </li>
                 {arr.map(((v,i) =>{ 
                     const pageVisible = (((i+1) >= pageLimitStart) && ((i+1) <= pageLimitEnd))
                     
-                    const firstPageExtraShouldBeVisible = !pageVisible && i+1 === 1;
-                    const lastPageExtraShouldBeVisible = !pageVisible && i+1 === pages;
+                    const firstPageExtraShouldBeVisible = !pageVisible && i+1 === 1; // show extra pages outside
+                    const lastPageExtraShouldBeVisible = !pageVisible && i+1 === pages; // show extra pages outside
 
-                    return pageVisible || firstPageExtraShouldBeVisible || lastPageExtraShouldBeVisible ?
+                    return pageVisible && (!firstPageExtraShouldBeVisible && !lastPageExtraShouldBeVisible) ?
                     <Fragment key={i+1}>
                         {lastPageExtraShouldBeVisible && (pageLimitEnd < pages-1)  ? 
                             <li className='Pagination__ExtraPage'>
@@ -64,6 +75,22 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
                     </Fragment> : null
                     }))
                 }
+                    <li className={`Pagination__ExtraPage ${pageLimitEnd >= pages-1 ? "Pagination__ExtraPage--hidden" : ""}`}>
+                        <p>...</p>
+                    </li>
+                    <li
+                        className={`Pagination__Item ${pageLimitEnd > pages-1 ? "Pagination__Item--hidden" : ""}`}
+                        onClick={() => {
+                            if(currentPage === pages) return;
+                            const params = new URLSearchParams();
+                            params.set("page", (pages).toString());
+                            router.push(pathname + '?' +params.toString());
+                        }}>
+                        {pages}
+                    </li>
+
+
+
                 <li className='Pagination__Item' onClick={() => {
                     if(currentPage === pages) return;
                     const params = new URLSearchParams();
