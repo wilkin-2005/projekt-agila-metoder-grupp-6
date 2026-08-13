@@ -1,0 +1,48 @@
+
+h2 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+}
+
+input,
+button,
+select,
+textarea {
+    font: inherit;
+}
+
+form.product-form {
+    display: grid;
+    gap: 1rem;
+
+    .form-group {
+        display: grid;
+        gap: 0.5rem;
+        max-width: 600px;
+
+        /* temp */
+        /* border: 1px solid black; */
+    }
+
+    label {
+        font-weight: var(--font-weight-bold);
+    }
+
+    textarea,
+    input,
+    select,
+    button {
+        padding: 0.5rem;
+        background-color: var(--surface-primary);
+        accent-color: var(--color-indigo-500);
+        border: 2px solid var(--border-default);
+        resize: none;
+    }
+
+    .btn-submit {
+        max-width: 12rem;
+        background-color: var(--surface-secondary);
+        color: var(--text-secondary);
+        font-weight: var(--font-weight-bold);
+    }
+}
