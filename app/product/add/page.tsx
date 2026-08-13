@@ -10,7 +10,7 @@ export default function Page() {
         <h1 className="AddProduct__Title">
             Add product
         </h1>
-        <a href='/'>Go to product page</a>
+        <a href='/'>Go back to products list</a>
         </div>
         <section>
             {
