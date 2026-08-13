@@ -7,16 +7,16 @@ export default function Page() {
     <main className="AddProduct">
         <section className="centered-section">
             <div className='AddProduct__Header'>
-        <h1 className="AddProduct__Title">
-            Add product
-        </h1>
-        <a href='/'>Go back to products list</a>
-        </div>
-        <section>
-            {
-                /* add product form here */
-            }
-        </section>
+                <h1 className="AddProduct__Title">
+                    Add product
+                </h1>
+                <a href='/'>Go back to products list</a>
+            </div>
+            <section>
+                {
+                    /* add product form here */
+                }
+            </section>
         </section>
     </main>
   );
