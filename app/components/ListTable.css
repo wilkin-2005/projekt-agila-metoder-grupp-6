@@ -31,7 +31,7 @@ border: 1px solid #0000003d;
 
 .ListTable__Sku{
     font-size: 0.8rem;
-    color: grey;
+    color: rgb(73, 73, 73);
 }
 
 .ListTable__ListItem-in-stock{
@@ -40,12 +40,12 @@ border: 1px solid #0000003d;
 }
 
 .ListTable__ListItem-low-stock{
-    color: orange;
-    font-weight: bolder;
+    color: #8e7100;
+    font-weight: bold;
 }
 
 .ListTable__ListItem-out-of-stock{
-    color: red;
+    color: rgb(214, 0, 0);
     font-weight: bolder;
 }
 
