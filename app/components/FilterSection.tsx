@@ -18,7 +18,7 @@ export default function FilterSection() {
             </select>
             
             <select id="stock" name="stock">
-                <option value="stock-all" selected>All Stock</option>
+                <option value="stock-all" defaultValue>All Stock</option>
                 <option value="in-stock">In stock</option>
                 <option value="low-stock">Low stock</option>
                 <option value="out-stock">Out of stock</option>
