@@ -1,135 +1,155 @@
-# WebShop – Del 1: Admin
+# WebShop – Part 1 – Admin
 
-Ett admin-gränssnitt för en webshop där produkter kan överblickas och hanteras. Projektet är byggt som en del av kursmomentet i agila metoder och fokuserar på samarbete, planering och ett fungerande arbetsflöde i Scrum.
+An admin interface for a webshop where products can be viewed and managed. The project was built as part of the Agile Methods course and focuses on collaboration, planning, and a Scrum-based workflow.
 
-## 📝 Om projektet
+## 📝 About the project
 
-Applikationen är ett adminverktyg för att hantera en webshops produktkatalog. Gränssnittet visar en översikt över produkter och deras lagerstatus samt en paginerad produktlista.
+This application is an admin tool for managing a webshop product catalogue. The interface displays an overview of products and their stock status, together with a paginated product list.
 
-Projektet är byggt i **Next.js** och hämtar produktdata från ett lokalt API som körs med **JSON Server**. Datan bygger på produkter från [DummyJSON](https://dummyjson.com/docs/products), men har anpassats efter projektets behov.
+The project is built with **Next.js** and retrieves product data from a local API powered by **JSON Server**. The data is based on products from [DummyJSON](https://dummyjson.com/docs/products), but has been adapted to fit the needs of this project.
 
-## 📝 Uppdraget
+## 📝 The assignment
 
-Målet är att bygga admin-sidorna för en webshop utifrån den tillhandahållna skissen. Applikationen ska hämta produktdata från ett API och på sikt erbjuda CRUD-funktionalitet för produkterna.
+The goal is to build the admin pages for a webshop based on the provided design sketch. The application should retrieve product data from an API and eventually provide CRUD functionality for the products.
 
-### Tekniska krav
+### Technical requirements
 
-1. **Arkitektur:** Server Components används för datahämtning och Client Components för interaktivitet.
-2. **Forms:** Formulär används för filter och för att skapa eller redigera data mot API:et.
-3. **Data:** Produkter ska kunna läsas, skapas, uppdateras och raderas via API:et.
-4. **URL State Management:** Sökning, filtrering och sortering ska hanteras via `searchParams`.
+1. **Architecture:** Use Server Components for data fetching and Client Components for interactivity.
+2. **Forms:** Use forms for filters and for creating or editing data through the API.
+3. **Data:** Products should be readable, creatable, updatable, and deletable through the API.
+4. **URL State Management:** Search, filtering, and sorting should be handled through `searchParams`.
 
-## ✨ Nuvarande funktionalitet
+## ✨ Current functionality
 
-- [x] Hämta produktdata från det lokala JSON Server-API:et
-- [x] Visa en översikt över det totala antalet produkter
-- [x] Visa en översikt över produkter i lager, med lågt lager och slut i lager
-- [x] Visa produktbild, SKU, varumärke, kategori, lagerstatus och pris i produktlistan
-- [x] Paginera produktlistan
-- [x] Använda Server Components för datahämtning
-- [x] Använda Client Components för tabell- och pagineringsinteraktioner
-- [x] Generera ID, SKU och metadata när en produkt skapas via middleware
-- [ ] Koppla sökning till produkt-API:et
-- [ ] Koppla kategorifilter till produkt-API:et
-- [ ] Koppla lagerstatusfilter till produkt-API:et
-- [ ] Hantera sökning, filtrering och sortering via `searchParams`
-- [ ] Skapa nya produkter via ett formulär
-- [ ] Redigera befintliga produkter via ett formulär
-- [ ] Radera produkter
-- [ ] Slutföra CRUD-funktionaliteten för produkter
+- [x] Fetch product data from the local JSON Server API
+- [x] Display an overview of the total number of products
+- [x] Display an overview of products that are in stock, low in stock, and out of stock
+- [x] Display product image, SKU, brand, category, stock status, and price in the product list
+- [x] Paginate the product list
+- [x] Use Server Components for data fetching
+- [x] Use Client Components for table and pagination interactions
+- [x] Generate an ID, SKU, and metadata when a product is created through the middleware
+- [ ] Connect product search to the API
+- [ ] Connect the category filter to the API
+- [ ] Connect the stock status filter to the API
+- [ ] Handle search, filtering, and sorting through `searchParams`
+- [ ] Create new products through a form
+- [ ] Edit existing products through a form
+- [ ] Delete products
+- [ ] Complete CRUD functionality for products
 
-Filterformuläret finns i gränssnittet, men är ännu inte kopplat till produktlistans API-anrop. CRUD-funktionaliteten är därför markerad som pågående utveckling ovan.
+The filter form is present in the interface but is not yet connected to the product API request. The CRUD functionality is therefore still under development.
 
-## 🛠️ Teknik
+## 🛠️ Technologies
 
 - [Next.js](https://nextjs.org/) 16
 - [React](https://react.dev/) 19
 - [TypeScript](https://www.typescriptlang.org/)
 - [JSON Server](https://github.com/typicode/json-server/tree/v0.17.4)
-- [Lucide React](https://lucide.dev/) för ikoner
-- CSS och Tailwind CSS-konfiguration
+- [Lucide React](https://lucide.dev/) for icons
+- CSS and Tailwind CSS configuration
 
-### Arkitektur
+### Architecture
 
-Projektet använder Server Components för datahämtning och Client Components för interaktivitet. Produktdata hämtas i `app/page.tsx` via `app/lib/products.ts`, medan exempelvis tabellen och pagineringen använder Client Components för interaktioner i webbläsaren.
+The project uses Server Components for data fetching and Client Components for interactivity. Product data is fetched in `app/page.tsx` through `app/lib/products.ts`, while the table and pagination use Client Components for browser-side interactions.
 
-## 🚀 Kom igång
+## 🚀 Getting started
 
-### Förkunskaper
+### Prerequisites
 
-Du behöver ha följande installerat:
+You need to have the following installed:
 
-- [Node.js](https://nodejs.org/) – rekommenderad version 20 eller senare
+- [Node.js](https://nodejs.org/) – version 20 or later is recommended
 - npm
 
-### Starta projektet
+### Installation
 
-Starta både Next.js-applikationen och JSON Server med:
+Clone the project and install its dependencies:
+
+```bash
+git clone https://github.com/Lexicon-Utbildning-Front-end-2026/Webshop-admin.git
+cd Webshop-admin
+npm install
+```
+
+### Run the project
+
+Start both the Next.js application and JSON Server with:
 
 ```bash
 npm run dev:full
 ```
 
-Öppna sedan [http://localhost:3000](http://localhost:3000) i webbläsaren.
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Det lokala API:et körs på [http://localhost:4000](http://localhost:4000). Produktdata finns på:
+The local API runs at [http://localhost:4000](http://localhost:4000). Product data is available at:
 
 ```text
 http://localhost:4000/products
 ```
 
-Du kan även starta tjänsterna separat:
+You can also start the services separately:
 
 ```bash
-npm run dev          # Startar Next.js
-npm run mock-server  # Startar JSON Server
+npm run dev          # Starts Next.js
+npm run mock-server  # Starts JSON Server
 ```
 
-## 📁 Projektstruktur
+## 📁 Project structure
 
 ```text
 app/
-├── components/              # Återanvändbara UI-komponenter
-├── lib/products.ts          # Hämtning av produktdata från API:et
-├── page.tsx                 # Applikationens huvudsida
-├── layout.tsx               # Gemensam layout och sidhuvud
-├── types.ts                 # TypeScript-typer för produkter och kategorier
-└── globals.css              # Globala stilar
+├── components/              # Reusable UI components
+├── lib/products.ts          # Fetches product data from the API
+├── page.tsx                 # Main application page
+├── layout.tsx               # Shared layout and page header
+├── types.ts                 # TypeScript types for products and categories
+└── globals.css              # Global styles
 
 server/
-├── products.json            # Mockdata för produkter och kategorier
-└── middleware.js            # Pagination, validering och SKU-generering
+├── products.json            # Mock data for products and categories
+└── middleware.js            # Pagination, validation, and SKU generation
 ```
 
-## 🔄 Arbetsprocessen
+## 🔄 Workflow
 
-Projektet genomförs med ett agilt arbetssätt baserat på Scrum.
+The project is developed using an agile workflow based on Scrum.
 
-- **GitHub Projects:** Uppgifter planeras, delas upp och följs upp i projektets board.
-- **Branching:** Funktionalitet utvecklas i feature-branches och mergas inte direkt till `main`.
-- **Commits:** Commit-meddelanden ska vara tydliga och beskriva förändringen.
-- **Pull Requests:** Färdiga uppgifter lämnas in som Pull Requests.
-- **Code Reviews:** Varje Pull Request ska granskas och godkännas av minst en annan gruppmedlem före merge.
+- **GitHub Projects:** Tasks are planned, divided into smaller parts, and tracked on the project board.
+- **Branching:** Features are developed in feature branches and are not merged directly into `main`.
+- **Commits:** Commit messages should be clear and describe the change.
+- **Pull Requests:** Completed tasks are submitted as Pull Requests.
+- **Code Reviews:** Every Pull Request must be reviewed and approved by at least one other group member before it is merged.
 
-## 📅 Tidslinje
+## 📅 Timeline
 
-- **Kursvecka 13:** Planering, setup och den första kodbasen. Listsidan skapades utan färdig filtrering, sökning och paginering.
-- **Kursvecka 15:** Klientkomponenter och URL State Management används för sökning, filter och eventuell paginering.
-- **Kursvecka 16:** CRUD-funktionalitet och formulär i Next.js färdigställs inför slutdemo.
+- **Course week 13:** Planning, setup, and the initial codebase. The list page was created without completed filtering, search, or pagination.
+- **Course week 15:** Client Components and URL State Management are used for search, filters, and pagination.
+- **Course week 16:** CRUD functionality and forms in Next.js are completed ahead of the final demonstration.
 
-## 👩‍💻 Gruppmedlemmar
+## ✅ Definition of Done
+
+- The functionality is complete and understandable.
+- The project has no TypeScript compilation errors.
+- The functionality has been tested and works for the entire group.
+- The functionality works together with the rest of the application.
+- The change has been merged into `main` according to the project workflow.
+- No known severe errors remain.
+- The related GitHub Issue has been updated.
+
+## 👩‍💻 Group members
 
 - Georgij Li
 - Leo Leksell
 - Mervin Bratic
 - Wilmer Kindstedt
 
-## 🏞️ Skiss
+## 🏞️ Design sketch
 
-![Skiss](skiss.png)
+![Design sketch](skiss.png)
 
-## 📚 Relaterade länkar
+## 📚 Related links
 
-- [Projektets GitHub-repository](https://github.com/Lexicon-Utbildning-Front-end-2026/Webshop-admin)
-- [Startkod](https://github.com/Lexicon-Utbildning-Front-end-2026/projekt-agila-metoder-startkod)
+- [Project GitHub repository](https://github.com/Lexicon-Utbildning-Front-end-2026/Webshop-admin)
+- [Starter code](https://github.com/Lexicon-Utbildning-Front-end-2026/projekt-agila-metoder-startkod)
 - [DummyJSON Products API](https://dummyjson.com/docs/products)
