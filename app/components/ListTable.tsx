@@ -1,7 +1,9 @@
 "use client"
+import { useRouter } from 'next/navigation';
 import './ListTable.css'
 
 export default function ListTable({data,columns}: {data:Record<string, any>[], columns:string[]}){
+    const router = useRouter();
     return <table className="ListTable">
         <thead>
             <tr>
@@ -30,7 +32,7 @@ export default function ListTable({data,columns}: {data:Record<string, any>[], c
                         ))}
                         <td key={"actions"}>
                             <div className="ListTable__actions">
-                                <img width={23} alt='edit-icon' onClick={() => console.log("edit")} src="edit.png"></img>
+                                <img width={23} alt='edit-icon' onClick={() => router.push(`product/edit/${d.id}`)} src="edit.png"></img>
                                 <img width={23} alt='delete-icon' onClick={() => console.log("delete")} src="delete.png"></img>
                         </div>
                     </td>

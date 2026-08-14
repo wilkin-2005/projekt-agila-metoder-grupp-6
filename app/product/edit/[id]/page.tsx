@@ -1,8 +1,10 @@
-"use client";
-
 import './page.css'
 
-export default function Page() {
+export default async function Page({params}: {params: Promise<{ id: string }>}) {
+    const { id } = await params;
+
+    // get product with id from api here
+
   return (
     <main className="EditProduct">
         <section className="centered-section">
