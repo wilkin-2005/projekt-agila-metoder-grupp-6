@@ -4,25 +4,9 @@ h2 {
     font-weight: var(--font-weight-bold);
 }
 
-input,
-button,
-select,
-textarea {
-    font: inherit;
-}
-
 form.product-form {
     display: grid;
     gap: 1rem;
-
-    .form-group {
-        display: grid;
-        gap: 0.5rem;
-        max-width: 600px;
-
-        /* temp */
-        /* border: 1px solid black; */
-    }
 
     label {
         font-weight: var(--font-weight-bold);
@@ -32,6 +16,7 @@ form.product-form {
     input,
     select,
     button {
+        font: inherit;
         padding: 0.5rem;
         background-color: var(--surface-primary);
         accent-color: var(--color-indigo-500);
@@ -39,10 +24,40 @@ form.product-form {
         resize: none;
     }
 
+    /* Form group and it's variants */
+    .form-group {
+        display: grid;
+        gap: 0.5rem;
+        max-width: 600px;
+    }
+
+    .form-group:has(.sku-input) {
+        display: block;
+
+        .sku-input {
+            display: flex;
+            gap: 0.2rem;
+
+            margin-top: 0.5rem;
+        }
+
+        span {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-medium);
+        }
+
+        input {
+            max-width: 4rem;
+            text-align: center;
+        }
+    }
+
+    /* Submitbutton */
     .btn-submit {
         max-width: 12rem;
         background-color: var(--surface-secondary);
         color: var(--text-secondary);
         font-weight: var(--font-weight-bold);
     }
+    
 }
