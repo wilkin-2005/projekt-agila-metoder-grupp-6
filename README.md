@@ -62,16 +62,6 @@ You need to have the following installed:
 - [Node.js](https://nodejs.org/) – version 20 or later is recommended
 - npm
 
-### Installation
-
-Clone the project and install its dependencies:
-
-```bash
-git clone https://github.com/Lexicon-Utbildning-Front-end-2026/Webshop-admin.git
-cd Webshop-admin
-npm install
-```
-
 ### Run the project
 
 Start both the Next.js application and JSON Server with:
@@ -127,16 +117,6 @@ The project is developed using an agile workflow based on Scrum.
 - **Course week 15:** Client Components and URL State Management are used for search, filters, and pagination.
 - **Course week 16:** CRUD functionality and forms in Next.js are completed ahead of the final demonstration.
 
-## ✅ Definition of Done
-
-- The functionality is complete and understandable.
-- The project has no TypeScript compilation errors.
-- The functionality has been tested and works for the entire group.
-- The functionality works together with the rest of the application.
-- The change has been merged into `main` according to the project workflow.
-- No known severe errors remain.
-- The related GitHub Issue has been updated.
-
 ## 👩‍💻 Group members
 
 - Georgij Li
@@ -146,7 +126,7 @@ The project is developed using an agile workflow based on Scrum.
 
 ## 🏞️ Design sketch
 
-![Design sketch](skiss.png)
+![Design sketch](/dev_notes/skiss.png)
 
 ## 📚 Related links
 
