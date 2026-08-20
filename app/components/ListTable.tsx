@@ -1,9 +1,11 @@
 "use client"
+import { useRouter } from 'next/navigation';
 import './ListTable.css'
 import { deleteProduct } from '../lib/products';
 import { useState } from 'react';
 
 export default function ListTable({data,columns}: {data:Record<string, any>[], columns:string[]}){
+    const router = useRouter();
     const [deletedProducts, setDeletedProducts] = useState<Record<string, boolean>>({})
     return <table className="ListTable">
         <thead>
@@ -33,7 +35,7 @@ export default function ListTable({data,columns}: {data:Record<string, any>[], c
                         ))}
                         <td key={"actions"}>
                             <div className="ListTable__actions">
-                                <img width={23} alt='edit-icon' onClick={() => console.log("edit")} src="edit.png"></img>
+                                <img width={23} alt='edit-icon' onClick={() => router.push(`product/edit/${d.id}`)} src="edit.png"></img>
                                 <img width={23} alt='delete-icon' onClick={async () => {
                                     try {
                                         await deleteProduct(d.id)

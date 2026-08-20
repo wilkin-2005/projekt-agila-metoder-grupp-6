@@ -25,7 +25,7 @@ export default async function Home({searchParams}: {searchParams?: Promise<{
       </section>
 
       <section className="centered-section">
-        Filter section
+        <FilterSection />
       </section>
 
       <section className="centered-section">

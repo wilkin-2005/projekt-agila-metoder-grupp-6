@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Plus } from 'lucide-react';
+import AddProductButton from "./components/AddProductButton";
+import { Metadata } from "next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +35,7 @@ export default function RootLayout({
               <h1>Inventory Management</h1>
               <span className="text-gray-500">Manage and track your global product catalogue across all categories</span>
             </div>
-            <button><Plus /> Add product</button>
+            <AddProductButton/>
           </div>
         </header>
         {children}

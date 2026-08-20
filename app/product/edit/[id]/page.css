@@ -1,0 +1,14 @@
+.EditProduct__Title{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.EditProduct__Header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.EditProduct__Header a{
+    color: blue;
+}

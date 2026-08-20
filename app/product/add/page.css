@@ -1,0 +1,14 @@
+.AddProduct__Title{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.AddProduct__Header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.AddProduct__Header a{
+    color: blue;
+}
