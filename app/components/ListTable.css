@@ -1,8 +1,16 @@
+@import 'tailwindcss';
+
 .ListTable{
     width: 100%;
     text-align: left;
     border-collapse: separate;
     border-spacing: 0;
+    table-layout: fixed;
+}
+
+.ListTable__Title{
+    height: 150px;
+    overflow: scroll;
 }
 
 .ListTable td, .ListTable th{
@@ -10,7 +18,7 @@
 }
 
 .ListTable thead{
-    background-color: #c9c9c94d;
+    background-color: var(--color-neutral-100);
 }
 
 .ListTable__Stock{
@@ -25,27 +33,27 @@
 }
 
 .ListTable__Title img{
-border: 1px solid #0000003d;
+  border: 1px solid var(--color-neutral-400);
   border-radius: 4px;
 }
 
 .ListTable__Sku{
     font-size: 0.8rem;
-    color: rgb(73, 73, 73);
+    color: var(--color-gray-800);
 }
 
 .ListTable__ListItem-in-stock{
-    color: green;
+    color: var(--color-green-700);
     font-weight: bolder;
 }
 
 .ListTable__ListItem-low-stock{
-    color: #8e7100;
+    color: var(--color-yellow-400);
     font-weight: bold;
 }
 
 .ListTable__ListItem-out-of-stock{
-    color: rgb(214, 0, 0);
+    color: var(--color-red-500);
     font-weight: bolder;
 }
 
@@ -53,17 +61,35 @@ border: 1px solid #0000003d;
     display: none;
 }
 
-.ListTable__actions{
+.ListTable__Actions{
     display: flex;
     gap: 8px;
     align-items: center;
 }
 
-.ListTable__actions img{
+.ListTable__Actions img{
     cursor: pointer;
     filter: invert(1);
 }
 
-.ListTable__actions button:hover{
+.ListTable__Actions button:hover{
     cursor: pointer;
+}
+
+.ListTable__ConfirmDelete{
+    display: flex;
+    overflow: scroll;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.ListTable__ConfirmDelete div{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+
+.ListTable__ConfirmDelete button:first-of-type{
+    color: var(--color-red-500);
 }

@@ -30,7 +30,7 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
                         if(currentPage === 1) return;
                         const params = new URLSearchParams();
                         params.set("page", (currentPage-1).toString());
-                        router.push(pathname + '?' +params.toString());
+                        router.replace(pathname + '?' +params.toString(), {scroll:false});
                     }}>
                         <ChevronLeft/>
                     </li>
@@ -40,7 +40,7 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
                         if(currentPage === 1) return;
                         const params = new URLSearchParams();
                         params.set("page", (1).toString());
-                        router.push(pathname + '?' +params.toString());
+                        router.replace(pathname + '?' +params.toString(), {scroll:false});
                     }}>1</li>
                     <li className={`Pagination__ExtraPage ${pageLimitStart <= 2 ? "Pagination__ExtraPage--hidden" : ""}`}>
                         <p>...</p>
@@ -62,7 +62,7 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
                          onClick={() =>{if(currentPage === i+1) return;
                             const params = new URLSearchParams();
                             params.set("page", (i+1).toString());
-                            router.push(pathname + '?' +params.toString());
+                            router.replace(pathname + '?' +params.toString(), {scroll:false});
                         }} 
                         >
                             <p>{i+1}</p>
@@ -84,7 +84,7 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
                             if(currentPage === pages) return;
                             const params = new URLSearchParams();
                             params.set("page", (pages).toString());
-                            router.push(pathname + '?' +params.toString());
+                            router.replace(pathname + '?' +params.toString(), {scroll:false});
                         }}>
                         {pages}
                     </li>
@@ -95,7 +95,7 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
                     if(currentPage === pages) return;
                     const params = new URLSearchParams();
                     params.set("page", (currentPage+1).toString());
-                    router.push(pathname + '?' +params.toString());
+                    router.replace(pathname + '?' +params.toString(), {scroll:false});
                 }}>
                     <ChevronRight/> 
                 </li>

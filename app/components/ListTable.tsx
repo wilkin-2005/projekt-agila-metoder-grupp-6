@@ -2,11 +2,22 @@
 import { useRouter } from 'next/navigation';
 import './ListTable.css'
 import { deleteProduct } from '../lib/products';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function ListTable({data,columns}: {data:Record<string, any>[], columns:string[]}){
+export default function ListTable({data,columns,page}: {data:Record<string, any>[], columns:string[],page:number}){
     const router = useRouter();
-    const [deletedProducts, setDeletedProducts] = useState<Record<string, boolean>>({})
+    const [deletedProducts, setDeletedProducts] = useState<Record<string, boolean>>({});
+    const [confirmDeletion, setConfirmDeletion] = useState();
+
+    const extraItemsNeeded = 6 - data.length + Object.keys(deletedProducts).length;
+    const extra: number[] = [];
+    extra.length = extraItemsNeeded;
+    extra.fill(0);
+
+    useEffect(() => {
+        setDeletedProducts({});
+    }, [page])
+
     return <table className="ListTable">
         <thead>
             <tr>
@@ -34,23 +45,36 @@ export default function ListTable({data,columns}: {data:Record<string, any>[], c
                             <td key={column}>{!mapper ?  d[column]: mapper(d, column)}</td>
                         ))}
                         <td key={"actions"}>
-                            <div className="ListTable__actions">
+                            <div className="ListTable__Actions">
                                 <img width={23} alt='edit-icon' onClick={() => router.push(`product/edit/${d.id}`)} src="edit.png"></img>
-                                <img width={23} alt='delete-icon' onClick={async () => {
-                                    try {
+                                {confirmDeletion === d.id ? <div className='ListTable__ConfirmDelete'><p>Delete item?</p><div> <button onClick={async () => {
+                                     try {
                                         await deleteProduct(d.id)
                                         setDeletedProducts((obj) => ({...obj, [d.id]: true}));   
+                                        setConfirmDeletion(undefined);
                                     } catch (error) {
                                         if(error instanceof Error){
                                             console.error(error.message)
                                         }
                                     }
+                                }}>Delete</button><button onClick={() => {
+                                    setConfirmDeletion(undefined);
+                                }}>Cancel</button></div> </div>: null}
+                                {confirmDeletion !== d.id ?
+                                <img width={23} alt='delete-icon' onClick={() => {
+                                        setConfirmDeletion(d.id);
                                 }
-                                } src="delete.png"></img>
+                                } src="delete.png"></img> : null
+                            }
                         </div>
                     </td>
                     </tr>
                 )
+            }
+            {
+                extra.map((v,i) => {
+                    return <tr key={data.length + i+1}><td> <div className="ListTable__Title">{' '}</div></td></tr>
+                })
             }
         </tbody>
     </table>
