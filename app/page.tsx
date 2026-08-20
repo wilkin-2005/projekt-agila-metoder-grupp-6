@@ -18,10 +18,13 @@ export default async function Home({searchParams}: {searchParams?: Promise<{
   // we can use the other destructed variables like page, total and so on to create pagination or show info
   const { products, total, page, pages, limit }: ProductsResponse = await getProducts({ _limit: '6',_page: _page })
 
+  // get all products to calculate stock count
+  const { products: allProducts }: ProductsResponse = await getProducts({ _limit: "" });
+
   return (
     <main>
       <section>
-        <StockOverview />
+        <StockOverview products={allProducts}/>
       </section>
 
       <section className="centered-section">
