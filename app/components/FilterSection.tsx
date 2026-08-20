@@ -1,7 +1,5 @@
-
 import "./FilterSection.css";
-import FilterSort from "./FilterSort";
-
+import FilterByStock from "./FilterByStock";
 
 // Filter section component
 export default function FilterSection() {
@@ -18,13 +16,8 @@ export default function FilterSection() {
                 <option value="watches-women">Women's Watches</option>
             </select>
             
-            <select id="stock" name="stock" defaultValue="stock-all">
-                <option value="stock-all">All Stock</option>
-                <option value="in-stock">In stock</option>
-                <option value="low-stock">Low stock</option>
-                <option value="out-stock">Out of stock</option>
-            </select>
-            
+            <FilterByStock>
+            </FilterByStock>
             <button className="filter-button"><img width={23} src="funnel.png"></img>Filter</button>
         </form>
     </section>
