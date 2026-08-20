@@ -1,5 +1,6 @@
 
 import "./FilterSection.css";
+import FilterSort from "./FilterSort";
 
 
 // Filter section component
