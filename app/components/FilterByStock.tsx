@@ -4,10 +4,10 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 type StatusProps = { value: string; name: string };
 
 const StockStatus = [
-    {value: `all-stock`, name: `All Stock`},
-    {value: `in-stock`, name: `In Stock`},
-    {value: `low-stock`, name: `Low Stock`},
-    {value: `no-stock`, name: `Out of Stock`}
+    {value: `all`, name: `All Stock`},
+    {value: `in`, name: `In Stock`},
+    {value: `low`, name: `Low Stock`},
+    {value: `none`, name: `Out of Stock`}
 ];
 
 export default function FilterByStock() {

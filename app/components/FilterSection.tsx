@@ -1,5 +1,6 @@
 import "./FilterSection.css";
 import FilterByStock from "./FilterByStock";
+import FilterByCategory from "./FilterByCategory";
 
 // Filter section component
 export default function FilterSection() {
@@ -10,11 +11,8 @@ export default function FilterSection() {
                 <input type="text" className="search-field" id="search" name="search" placeholder="Search products">
                 </input>
             </div>
-            <select id="categories" name="categories">
-                <option value="categories-all">All Categories</option>
-                <option value="shoes-women">Women's Shoes</option>
-                <option value="watches-women">Women's Watches</option>
-            </select>
+            <FilterByCategory>
+            </FilterByCategory>
             
             <FilterByStock>
             </FilterByStock>
