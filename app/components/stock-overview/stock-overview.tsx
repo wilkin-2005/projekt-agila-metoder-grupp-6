@@ -1,10 +1,21 @@
 
+import { Product } from "@/app/types";
 import "./stock-overview.css"
 
 // Stock status overview-compontent. Formerly known as "product count section"
-export default function StockOverview()
+export default function StockOverview({products}: {products: Product[]})
 {
     const svgSize = 48;
+
+    const lowStock = products.filter(
+        (product) => product.stock && product.stock > 0 && product.stock < 10,
+    ).length;
+    
+    const outOfStock = products.filter((product) => product.stock === 0).length;
+    
+    const inStock = products.filter(
+        (product) => product.stock && product.stock >= 10,
+    ).length;
 
     return (
     <section className="stock-overview-section" aria-labelledby="stock-status-overview-header">
@@ -16,7 +27,7 @@ export default function StockOverview()
             <h3 id="products-header">Products</h3>
 
             <div className="data--icon products-amount">
-                <span>193</span>
+                <span>{products.length}</span>
 
                 <svg xmlns="http://www.w3.org/2000/svg" width={svgSize} height={svgSize} viewBox="0 0 24 24" fill="currentColor"
                 stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
@@ -32,7 +43,7 @@ export default function StockOverview()
             <h3 id="in-stock-header">In stock</h3>
 
             <div className="data--icon in-stock-amount">
-                <span>169</span>
+                <span>{inStock}</span>
 
                 <svg xmlns="http://www.w3.org/2000/svg" width={svgSize} height={svgSize} viewBox="0 0 24 24" fill="currentColor"
                 stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
@@ -47,7 +58,7 @@ export default function StockOverview()
             <h3 id="low-stock-header">Low stock</h3>
 
             <div className="data--icon low-stock-amount">
-                <span>20</span>
+                <span>{lowStock}</span>
 
                 <svg xmlns="http://www.w3.org/2000/svg" width={svgSize} height={svgSize} viewBox="0 0 24 24" fill="currentColor"
                 stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
@@ -64,7 +75,7 @@ export default function StockOverview()
             <h3 id="out-of-stock-header">Out of stock</h3>
 
             <div className="data--icon out-of-stock-amount">
-                <span>4</span>
+                <span>{outOfStock}</span>
 
                 <svg xmlns="http://www.w3.org/2000/svg" width={svgSize} height={svgSize} viewBox="0 0 24 24" fill="currentColor"
                 stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
