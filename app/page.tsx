@@ -5,10 +5,6 @@ import StockOverview from "@/app/components//stock-overview/stock-overview";
 import { getProducts } from "./lib/products";
 import type { ProductsResponse } from "./types";
 
-{/* temporary. Don't commit and remove before Pull Requst */}
-import ProductForm from "@/app/components/product-form/product-form";
-
-
 export default async function Home({searchParams}: {searchParams?: Promise<{
     page?: string;
   }>}) {
@@ -24,13 +20,6 @@ export default async function Home({searchParams}: {searchParams?: Promise<{
 
   return (
     <main>
-
-      {/* temporary. Don't commit and remove before Pull Requst */}
-      <section className="centered-section">
-        <ProductForm />
-      </section>
-      
-
       <section>
         <StockOverview />
       </section>
