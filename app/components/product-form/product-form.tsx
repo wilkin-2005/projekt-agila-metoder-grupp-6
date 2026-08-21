@@ -34,7 +34,8 @@ export default function ProductForm()
                 {/* description: string; */}
                 <div className="form-group">
                     <label htmlFor="description"> Description (max 250 characters)<span className="required-text">*</span> </label>
-                    <input type="text" id="description" name="description" placeholder="Product description..." maxLength={250} required />
+                    {/* <input type="text" id="description" name="description" placeholder="Product description..." maxLength={250} required /> */}
+                    <textarea id="description" name="description" placeholder="Product description..." maxLength={250} rows={4} required />
                 </div>
 
 
@@ -89,8 +90,8 @@ export default function ProductForm()
 
                 {/* brand?: string; */}
                 <div className="form-group" >
-                    <label htmlFor="brand" > Product brand<span className="required-text">*</span> </label>
-                    <input type="text" id="brand" name="brand" placeholder="The products brand..." />
+                    <label htmlFor="brand" > Product brand (max 50 characters)<span className="required-text">*</span> </label>
+                    <input type="text" id="brand" name="brand" placeholder="The products brand..." maxLength={50} />
                 </div>
 
 
@@ -116,21 +117,21 @@ export default function ProductForm()
                 {/* price: number; */}
                 <div className="form-group">
                     <label htmlFor="price">Price in euros (€)<span className="required-text">*</span> </label>
-                    <input type="number" id="price" name="price" placeholder="Product price..." required />
+                    <input type="number" id="price" name="price" placeholder="Product price..." min={1} required />
                 </div>
 
 
                 {/* discountPercentage?: number; */}
                 <div className="form-group">
                     <label htmlFor="discountPercentage" > Discount in percent (%) </label>
-                    <input type="number" id="discountPercentage" name="discountPercentage" placeholder="Product discount..." />
+                    <input type="number" id="discountPercentage" name="discountPercentage" placeholder="Product discount..." min={1} max={100} />
                 </div>
 
 
                 {/* stock?: number; */}
                 <div className="form-group" >
                     <label htmlFor="stock" > Products in stock </label>
-                    <input type="number" id="stock" name="stock" placeholder="Number of products in stock..." />
+                    <input type="number" id="stock" name="stock" placeholder="Number of products in stock..." min={0} />
                 </div>
 
 
@@ -155,7 +156,7 @@ export default function ProductForm()
                 {/* Unknown weight unit used in API. We say it's kilograms */}
                 <div className="form-group" >
                     <label htmlFor="weight" > Product weight in kilograms (kg) </label>
-                    <input type="number" id="weight" name="weight" placeholder="The products weight..." />
+                    <input type="number" id="weight" name="weight" placeholder="The products weight..." min={0} />
                 </div>
 
 
@@ -169,13 +170,13 @@ export default function ProductForm()
                     <legend>Product dimensions</legend>
 
                     <label htmlFor="width" > Width in centimeters (cm) </label>
-                    <input type="number" id="width" name="width" placeholder="Product width..." />
+                    <input type="number" id="width"  name="width"  placeholder="Product width..."  min={1} />
 
                     <label htmlFor="height" > Height in centimeters (cm) </label>
-                    <input type="number" id="height" name="height" placeholder="Product height..." />
+                    <input type="number" id="height" name="height" placeholder="Product height..." min={1} />
 
                     <label htmlFor="depth" > Depth in centimeters (cm) </label>
-                    <input type="number" id="depth" name="depth" placeholder="Product depth..." />
+                    <input type="number" id="depth"  name="depth"  placeholder="Product depth..."  min={1} />
                 </fieldset>
 
 
@@ -188,7 +189,6 @@ export default function ProductForm()
                     <label htmlFor="rating" > Rating from 1-5 </label>
                     <input type="range" id="rating" name="rating" placeholder="Rating (1-5)" min={1} max={5} />
                 </div> */}
-
 
                 {/* reviews?: {
                         rating: number;
@@ -204,8 +204,8 @@ export default function ProductForm()
                     <label htmlFor="review-rating"> Rating </label>
                     <input type="number" id="review-rating" name="review-rating" min="1" max="5" placeholder="Rating (1-5)" />
 
-                    <label htmlFor="review-comment"> Comment </label>
-                    <textarea id="review-comment" name="review-comment" placeholder="Leave a comment..."></textarea>
+                    <label htmlFor="review-comment"> Comment (max 250 characters) </label>
+                    <textarea id="review-comment" name="review-comment" placeholder="Leave a comment..."  maxLength={250} rows={3} />
 
                     <label htmlFor="review-date"> Review date </label>
                     <input type="date" id="review-date" name="review-date" />
@@ -319,6 +319,8 @@ export default function ProductForm()
         </section>
     );
 }
+
+
 
 /* sku?: string; */
 /* The SKU code is auto-generated */

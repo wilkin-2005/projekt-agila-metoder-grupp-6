@@ -49,11 +49,14 @@ form.product-form {
 
     label {
         font-weight: var(--font-weight-semibold);
-        margin-block-start: 0.5rem;
         padding-block-end: 0.5rem;
-        text-align: start end;
+        margin-block-start: 0.5rem;
 
-        margin-block: auto;
+        /* Removes margin from top when the label has a "required"-asterisk. */
+        /* An "required"-asterisk already adds some more whitespace above the label because of it larger font-size. */
+        &:has(.required-text) {
+            margin-block-start: 0;
+        }
     }
 
     .required-text {
@@ -76,10 +79,10 @@ form.product-form {
         }
     }
 
-    /* Submitbutton */
+    /* Submit button */
     .form-btn {
         margin-block: 0.5rem 0;
-        width: 50%;
+        width: 100%;
         margin-inline: auto;
 
         font-weight: var(--font-weight-bold);
