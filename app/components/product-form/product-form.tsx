@@ -90,8 +90,8 @@ export default function ProductForm()
 
                 {/* brand?: string; */}
                 <div className="form-group" >
-                    <label htmlFor="brand" > Product brand (max 50 characters)<span className="required-text">*</span> </label>
-                    <input type="text" id="brand" name="brand" placeholder="The products brand..." maxLength={50} />
+                    <label htmlFor="brand" > Brand (max 30 characters)<span className="required-text">*</span> </label>
+                    <input type="text" id="brand" name="brand" placeholder="The products brand..." maxLength={30} />
                 </div>
 
 
@@ -100,13 +100,13 @@ export default function ProductForm()
                     <legend>Add 1-3 tags</legend>
 
                     <label htmlFor="tag1" > Product tag 1 </label>
-                    <input type="text" id="tag1" name="tag1" placeholder="Product tag 1..." />
+                    <input type="text" id="tag1" name="tag1" placeholder="Product tag 1..." maxLength={30} />
 
                     <label htmlFor="tag2" > Product tag 2 </label>
-                    <input type="text" id="tag2" name="tag2" placeholder="Product tag 2..." />
+                    <input type="text" id="tag2" name="tag2" placeholder="Product tag 2..." maxLength={30} />
 
                     <label htmlFor="tag3" > Product tag 3 </label>
-                    <input type="text" id="tag3" name="tag3" placeholder="Product tag 3..." />
+                    <input type="text" id="tag3" name="tag3" placeholder="Product tag 3..." maxLength={30} />
                 </fieldset>
 
 
@@ -118,6 +118,7 @@ export default function ProductForm()
                 <div className="form-group">
                     <label htmlFor="price">Price in euros (€)<span className="required-text">*</span> </label>
                     <input type="number" id="price" name="price" placeholder="Product price..." min={1} required />
+                    {/* TODO: make it possible to input decimal numbers. */}
                 </div>
 
 
@@ -138,6 +139,7 @@ export default function ProductForm()
                 {/* availabilityStatus: string */}
                 <div className="form-group" >
                     <label htmlFor="availability" > Product availability </label>
+                    {/* Availability information should propably be calculated automatically from the stock number. */}
 
                     <select id="availability" name="availability" defaultValue="default">
                         <option value="default" disabled>Set availability</option>
@@ -188,6 +190,7 @@ export default function ProductForm()
                 {/* <div className="form-group" >
                     <label htmlFor="rating" > Rating from 1-5 </label>
                     <input type="range" id="rating" name="rating" placeholder="Rating (1-5)" min={1} max={5} />
+                    // Should be possible to have it in decimal numbers.
                 </div> */}
 
                 {/* reviews?: {
@@ -199,7 +202,8 @@ export default function ProductForm()
                     }[];
                 */}
                 <fieldset className="form-group" >
-                    <legend>Product Review</legend>
+                    <legend> Product Review </legend>
+                    {/* Maybe doesn't make sense that the admin can add review information to a products. Maybe remove later? */}
 
                     <label htmlFor="review-rating"> Rating </label>
                     <input type="number" id="review-rating" name="review-rating" min="1" max="5" placeholder="Rating (1-5)" />
@@ -225,14 +229,15 @@ export default function ProductForm()
                 {/* minimumOrderQuantity?: number; */}
                 <div className="form-group" >
                     <label htmlFor="min-order-quantity" > Minimum order quantity </label>
-                    <input type="number" id="min-order-quantity" name="min-order-quantity" placeholder="Minimum amount of products ordered..." min={1} />
+                    <input type="number" id="min-order-quantity" name="min-order-quantity" placeholder="Minimum amount of products per order..." min={1} />
                 </div>
 
 
                 {/* shippingInformation?: string; */}
                 <div className="form-group" >
-                    <label htmlFor="shippingInfo" > Shipping information </label>
-                    <input type="text" id="shippingInfo" name="shippingInfo" placeholder="Information on how the product ships..." />
+                    <label htmlFor="shippingInfo" > Shipping information (max 150 characters) </label>
+                    {/* <input type="text" id="shippingInfo" name="shippingInfo" placeholder="Information on how the product ships..." maxLength={150} /> */}
+                    <textarea id="shippingInfo" name="descshippingInfoription" placeholder="Information on how the product ships..." maxLength={150} rows={2} />
                 </div>
 
 
@@ -254,7 +259,28 @@ export default function ProductForm()
                 {/* warrantyInformation?: string; */}
                 <div className="form-group" >
                     <label htmlFor="warrantyInfo" > Warranty information </label>
-                    <input type="text" id="warrantyInfo" name="warrantyInfo" placeholder="Information on the products warranty..." />
+
+                    <select id="warrantyInfo" name="warrantyInfo" defaultValue="default" >
+                        <option value="default" disabled > Select warranty length </option>
+
+                        <option value="warranty-none" > No warranty </option>
+                        <option value="warranty-weeks-1" > 1 week warranty </option>
+
+                        <optgroup label="Months">
+                            <option value="warranty-months-1" > 1 month warranty </option>
+                            <option value="warranty-months-3" > 3 months warranty </option>
+                            <option value="warranty-months-6" > 6 months warranty </option>
+                        </optgroup>
+
+                        <optgroup label="Years">
+                            <option value="warranty-years-1" > 1 year warranty </option>
+                            <option value="warranty-years-2" > 2 year warranty </option>
+                            <option value="warranty-years-1" > 3 year warranty </option>
+                            <option value="warranty-years-5" > 5 year warranty </option>
+                        </optgroup>
+
+                        <option value="warranty-lifetime" > Lifetime warranty </option>
+                    </select>
                 </div>
 
 
@@ -264,7 +290,9 @@ export default function ProductForm()
 
                 {/* images: string[]; */}
                 <fieldset className="form-group" >
-                    <legend> Add 1-6 images </legend>
+                    <legend> Add 1-6 images <span className="minor-info"> (preferably 1000 x 1000 pixels) </span> </legend>
+
+                    <p></p>
 
                     <label htmlFor="image1"> Product image 1 </label>
                     <input type="url" id="image1" name="image1" placeholder="Paste link to image 1..." />
@@ -288,7 +316,7 @@ export default function ProductForm()
 
                 {/* thumbnail: string; */}
                 <div className="form-group" >
-                    <label htmlFor="thumbnail" > Product thumbnail<span className="required-text">*</span> </label>
+                    <label htmlFor="thumbnail" > Product thumbnail <span className="minor-info"> (preferably 300 x 300 pixels) </span> <span className="required-text">*</span> </label>
                     <input type="url" id="thumbnail" name="thumbnail" placeholder="Paste link to small thumbnail image..." required />
                 </div>
 

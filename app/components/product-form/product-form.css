@@ -65,6 +65,11 @@ form.product-form {
         font-weight: var(--font-weight-semibold);
     }
 
+    .minor-info {
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-normal);
+    }
+
     /* Styling for the fieldset with the product dimension inputs */
     fieldset {
         border: 2px solid var(--border-default);
