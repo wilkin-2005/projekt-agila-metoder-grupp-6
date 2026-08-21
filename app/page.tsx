@@ -8,18 +8,22 @@ import type { ProductsResponse } from "./types";
 export default async function Home({ searchParams }: {
     searchParams?: Promise<{
     page?: string;
-    categoryId?: string
-    stock?: string
+    categoryId?: string;
+    stock?: string;
+    search?: string;
     }>}) 
   {
 
   const _searchParams = await searchParams;
   const _page = _searchParams?.page || "1";
-  const categoryId = _searchParams?.categoryId
-  const stock = _searchParams?.stock
+  const categoryId = _searchParams?.categoryId;
+  const stock = _searchParams?.stock;
+  const search = _searchParams?.search;
 
   const options = {
-    _limit: '6', _page: _page,
+    _limit: "6",
+    _page,
+    ...(search ? { q: search } : {}),
     ...(categoryId ? { categoryId } : {}),
     ...(stock === "in-stock"
       ? { stock_gte: "11" }

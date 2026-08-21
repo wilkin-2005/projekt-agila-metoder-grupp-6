@@ -1,7 +1,6 @@
 "use client";
-
 import './Pagination.css';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 import { Fragment } from 'react/jsx-runtime';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -28,9 +27,10 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
     return <ul className='Pagination'>
                     <li className='Pagination__Item' onClick={() => {
                         if(currentPage === 1) return;
-                        const params = new URLSearchParams();
-                        params.set("page", (currentPage-1).toString());
-                        router.push(pathname + '?' +params.toString());
+                        const searchParams = useSearchParams();
+                        const params = new URLSearchParams(searchParams);
+                        params.set("page", String(currentPage + 1));
+                        router.push(`${pathname}?${params.toString()}`);
                     }}>
                         <ChevronLeft/>
                     </li>

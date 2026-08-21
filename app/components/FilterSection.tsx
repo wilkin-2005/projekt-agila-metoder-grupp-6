@@ -1,39 +1,38 @@
 "use client"
-
 import "./FilterSection.css";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { SubmitEvent } from "react";
+import type { SubmitEvent } from "react";
 
 // Filter by: category
 type CategoryProps = { value: string; name: string };
 
 const Categories = [
     {value: `all`, name: `All Categories`},
-    {value: `beauty`, name: `Beauty`},
-    {value: `fragrances`, name: `Fragrances`},
-    {value: `furniture`, name: `Furniture`},
-    {value: `groceries`, name: `Groceries`},
-    {value: `home-decorations`, name: `Home Decorations`},
-    {value: `accessories-kitchen`, name: `Kitchen Accessories`},
-    {value: `laptops`, name: `Laptops`},
-    {value: `shirts-men`, name: `Men's Shirts`},
-    {value: `shoes-men`, name: `Men's Shoes`},
-    {value: `watches-men`, name: `Men's Watches`},
-    {value: `accessories-mobile`, name: `Mobile Accessories`},
-    {value: `motorcycle`, name: `Motorcycle`},
-    {value: `skin-care`, name: `Skin Care`},
-    {value: `smartphones`, name: `Smartphones`},
-    {value: `accessories-sports`, name: `Sports Accessories`},
-    {value: `sunglasses`, name: `Sunglasses`},
-    {value: `tablets`, name: `Tablets`},
-    {value: `tops`, name: `Tops`},
-    {value: `vehicle`, name: `Vehicle`},
-    {value: `bags-women`, name: `Women's Bags`},
-    {value: `dresses-women`, name: `Women's Dresses`},
-    {value: `jewellery-women`, name: `Women's Jewellery`},
-    {value: `shirts-women`, name: `Women's Shirts`},
-    {value: `shoes-women`, name: `Women's Shoes`},
-    {value: `watches-women`, name: `Women's Watches`}
+    {value: `1`, name: `Beauty`},
+    {value: `2`, name: `Fragrances`},
+    {value: `3`, name: `Furniture`},
+    {value: `4`, name: `Groceries`},
+    {value: `5`, name: `Home Decorations`},
+    {value: `6`, name: `Kitchen Accessories`},
+    {value: `7`, name: `Laptops`},
+    {value: `8`, name: `Men's Shirts`},
+    {value: `9`, name: `Men's Shoes`},
+    {value: `10`, name: `Men's Watches`},
+    {value: `11`, name: `Mobile Accessories`},
+    {value: `12`, name: `Motorcycle`},
+    {value: `13`, name: `Skin Care`},
+    {value: `14`, name: `Smartphones`},
+    {value: `15`, name: `Sports Accessories`},
+    {value: `16`, name: `Sunglasses`},
+    {value: `17`, name: `Tablets`},
+    {value: `18`, name: `Tops`},
+    {value: `19`, name: `Vehicle`},
+    {value: `20`, name: `Women's Bags`},
+    {value: `21`, name: `Women's Dresses`},
+    {value: `22`, name: `Women's Jewellery`},
+    {value: `23`, name: `Women's Shirts`},
+    {value: `24`, name: `Women's Shoes`},
+    {value: `25`, name: `Women's Watches`}
 ];
 
 //Filter by: stock
@@ -41,9 +40,9 @@ type StatusProps = { value: string; name: string };
 
 const StockStatus = [
     {value: `all`, name: `All Stock`},
-    {value: `in`, name: `In Stock`},
-    {value: `low`, name: `Low Stock`},
-    {value: `none`, name: `Out of Stock`}
+    {value: `in-stock`, name: `In Stock`},
+    {value: `low-stock`, name: `Low Stock`},
+    {value: `out-stock`, name: `Out of Stock`}
 ];
 
 // Filter section component
