@@ -2,6 +2,7 @@
 
 import "./FilterSection.css";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { SubmitEvent } from "react";
 
 // Filter by: category
 type CategoryProps = { value: string; name: string };
@@ -51,7 +52,7 @@ export default function FilterSection() {
     const pathname = usePathname();
     const router = useRouter();
 
-    const filterSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    const filterSearch = (event: SubmitEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         const inputData = new FormData(event.currentTarget);
@@ -74,23 +75,22 @@ export default function FilterSection() {
     <section className="filter-section">
         <form className="filter-form" onSubmit={filterSearch}>
             <div className="form-search">
-                <input type="text" className="search-field" id="search" name="search" placeholder="Search products">
-                </input>
+                <input type="text" className="search-field" id="search" name="search" placeholder="Search products" 
+                defaultValue={searchParams.get("search") ?? ""}/>
             </div>
 
-                <select id="category" name="category" defaultValue={searchParams.get(`category`)?.toString()}>
-                    {Categories.map((category: CategoryProps, index) => (
-                    <option key={index} value={category.value}>{category.name}</option>
-                    ))}
-                </select>
-
-                <select id="stock" name="stock" defaultValue={searchParams.get(`stock`)?.toString()}>
-                    {StockStatus.map((status: StatusProps, index) => (
-                    <option key={index} value={status.value}>{status.name}</option>
-                    ))}
-                </select>
+            <select id="category" name="category" defaultValue={searchParams.get(`category`)?.toString()}>
+                {Categories.map((category: CategoryProps, index) => (
+                <option key={index} value={category.value}>{category.name}</option>
+                ))}
+            </select>
+            <select id="stock" name="stock" defaultValue={searchParams.get(`stock`)?.toString()}>
+                {StockStatus.map((status: StatusProps, index) => (
+                <option key={index} value={status.value}>{status.name}</option>
+                ))}
+            </select>
             
-            <button type="submit" className="filter-button"><img width={23} src="funnel.png"></img>Filter</button>
+            <button type="submit" className="filter-button"><img width={23} src="funnel.png" alt="" />Filter</button>
         </form>
     </section>
     )
