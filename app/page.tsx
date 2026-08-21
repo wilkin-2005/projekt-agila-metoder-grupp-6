@@ -7,11 +7,13 @@ import type { ProductsResponse } from "./types";
 
 export default async function Home({searchParams}: {searchParams?: Promise<{
     page?: string;
+    search?: string;
     category?: string
     stock?: string
   }>}) {
 
   const _searchParams = await searchParams;
+  const search = _searchParams?.search
   const category = _searchParams?.category
   const _stock = _searchParams?.stock
   const _page = _searchParams?.page || "1";
@@ -20,7 +22,7 @@ export default async function Home({searchParams}: {searchParams?: Promise<{
   // in this fetch we sort using _sort and _order and we limit the number of products using _limit
   // we also use _expand to get the relational category data
   // we can use the other destructed variables like page, total and so on to create pagination or show info
-  const { products, total, page, pages, limit }: ProductsResponse = await getProducts({ _limit: '6',_page: _page, category, _stock })
+  const { products, total, page, pages, limit }: ProductsResponse = await getProducts({ _limit: '6',_page: _page, search, category, _stock })
 
   return (
     <main>

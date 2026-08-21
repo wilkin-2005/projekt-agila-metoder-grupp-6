@@ -1,6 +1,7 @@
 import type { ProductsResponse } from '../types'
 
 type SearchParams = {
+  search?: string
   category?: string
   _stock?: string
   _limit?: string

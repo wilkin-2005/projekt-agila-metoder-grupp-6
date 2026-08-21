@@ -4,6 +4,7 @@ import './ListTable.css'
 
 export default function ListTable({data,columns}: {data:Record<string, any>[], columns:string[]}){
     const router = useRouter();
+
     return <table className="ListTable">
         <thead>
             <tr>
