@@ -5,18 +5,31 @@ import StockOverview from "@/app/components//stock-overview/stock-overview";
 import { getProducts } from "./lib/products";
 import type { ProductsResponse } from "./types";
 
-export default async function Home({searchParams}: {searchParams?: Promise<{
+export default async function Home({ searchParams }: {
+  searchParams?: Promise<{
     page?: string;
-  }>}) {
+    categoryId?: string
+    stock?: string
+  }>
+}) {
 
   const _searchParams = await searchParams;
   const _page = _searchParams?.page || "1";
+  const categoryId = _searchParams?.categoryId
+  const stock = _searchParams?.stock
 
-  // we use the fetch() method to get the products from the API
-  // in this fetch we sort using _sort and _order and we limit the number of products using _limit
-  // we also use _expand to get the relational category data
-  // we can use the other destructed variables like page, total and so on to create pagination or show info
-  const { products, total, page, pages, limit }: ProductsResponse = await getProducts({ _limit: '6',_page: _page })
+  const options = {
+    _limit: '6', _page: _page,
+    ...(categoryId ? { categoryId } : {}),
+    ...(stock === "in-stock"
+      ? { stock_gte: "11" }
+      : stock === "low-stock"
+        ? { stock_gte: "1", stock_lte: "10" }
+        : stock === "out-stock"
+          ? { stock: "0" } : {})
+  }
+
+  const { products, total, page, pages, limit }: ProductsResponse = await getProducts(options)
 
   // get all products to calculate stock count
   const { products: allProducts }: ProductsResponse = await getProducts({ _limit: "" });
@@ -24,7 +37,7 @@ export default async function Home({searchParams}: {searchParams?: Promise<{
   return (
     <main>
       <section>
-        <StockOverview products={allProducts}/>
+        <StockOverview products={allProducts} />
       </section>
 
       <section className="centered-section">
@@ -32,8 +45,8 @@ export default async function Home({searchParams}: {searchParams?: Promise<{
       </section>
 
       <section className="centered-section">
-        <ListTable page={page} data={products} columns={["title","brand","category","stock", "price"]}/>
-        <Pagination page={parseInt(_page,10)} pages={pages}/>
+        <ListTable page={page} data={products} columns={["title", "brand", "category", "stock", "price"]} />
+        <Pagination page={parseInt(_page, 10)} pages={pages} />
       </section>
 
     </main>

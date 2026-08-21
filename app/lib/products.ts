@@ -5,7 +5,11 @@ type SearchParams = {
   _sort?: string
   _order?: string
   _expand?: string
-  _page?:string
+  _page?: string
+  categoryId?: string
+  stock?: string
+  stock_gte?: string
+  stock_lte?: string
 }
 
 const BASE_URL = 'http://localhost'
@@ -27,7 +31,8 @@ export async function getProducts(options?: SearchParams): Promise<ProductsRespo
     throw new Error('Failed to load products')
   }
 
-  return response.json()
+  const products = response.json()
+  return products
 }
 
 export async function deleteProduct(id:number): Promise<undefined> {
