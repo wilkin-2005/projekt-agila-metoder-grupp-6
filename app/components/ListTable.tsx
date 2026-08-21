@@ -47,8 +47,9 @@ export default function ListTable({data,columns,page}: {data:Record<string, any>
                         <td key={"actions"}>
                             <div className="ListTable__Actions">
                                 <img width={23} alt='edit-icon' onClick={() => router.push(`product/edit/${d.id}`)} src="edit.png"></img>
-                                {confirmDeletion === d.id ? <div className='ListTable__ConfirmDelete'><p>Delete item?</p><div> <button onClick={async () => {
-                                     try {
+                                <img width={23} alt='delete-icon' onClick={async () => {
+                                    if(window.confirm('Delete ' + d.title + "?")){
+                                        try {
                                         await deleteProduct(d.id)
                                         setDeletedProducts((obj) => ({...obj, [d.id]: true}));   
                                         setConfirmDeletion(undefined);
@@ -63,15 +64,9 @@ export default function ListTable({data,columns,page}: {data:Record<string, any>
                                             console.error(error.message)
                                         }
                                     }
-                                }}>Delete</button><button onClick={() => {
-                                    setConfirmDeletion(undefined);
-                                }}>Cancel</button></div> </div>: null}
-                                {confirmDeletion !== d.id ?
-                                <img width={23} alt='delete-icon' onClick={() => {
-                                        setConfirmDeletion(d.id);
+                                    }
                                 }
-                                } src="delete.png"></img> : null
-                            }
+                                } src="delete.png"></img>
                         </div>
                     </td>
                     </tr>
