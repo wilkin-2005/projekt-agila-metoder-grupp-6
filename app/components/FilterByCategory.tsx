@@ -39,7 +39,7 @@ export default function FilterByCategory() {
 
     const handleFilterByCategory = (category: string) => {
         const newParams = new URLSearchParams(searchParams);
-        newParams.set(`page`, `1`);
+        newParams.set(`products`, `1`);
         newParams.set(`category`, category);
 
         console.log(newParams.toString());
@@ -47,7 +47,7 @@ export default function FilterByCategory() {
     };
 
     return (
-        <select id="categories" name="categories" onChange={
+        <select id="category" name="category" onChange={
             (event) => handleFilterByCategory(event.target.value)} defaultValue={searchParams.get(`categories`)?.toString()}>
             {Categories.map((category: CategoryProps, index) => (
             <option key={index} value={category.value}>{category.name}</option>

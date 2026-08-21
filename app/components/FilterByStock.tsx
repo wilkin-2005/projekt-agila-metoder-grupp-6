@@ -17,7 +17,7 @@ export default function FilterByStock() {
 
     const handleFilterByStock = (stock: string) => {
         const newParams = new URLSearchParams(searchParams);
-        newParams.set(`page`, `1`);
+        newParams.set(`products`, `1`);
         newParams.set(`stock`, stock);
 
         console.log(newParams.toString());

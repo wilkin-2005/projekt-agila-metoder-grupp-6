@@ -1,6 +1,8 @@
 import type { ProductsResponse } from '../types'
 
 type SearchParams = {
+  category?: string
+  _stock?: string
   _limit?: string
   _sort?: string
   _order?: string
@@ -17,6 +19,7 @@ export async function getProducts(options?: SearchParams): Promise<ProductsRespo
     _sort: 'id',
     _order: 'desc',
     _expand: 'category',
+    category: '',
     ...options,
   })
 
