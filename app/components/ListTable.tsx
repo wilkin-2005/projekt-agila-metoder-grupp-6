@@ -52,6 +52,12 @@ export default function ListTable({data,columns,page}: {data:Record<string, any>
                                         await deleteProduct(d.id)
                                         setDeletedProducts((obj) => ({...obj, [d.id]: true}));   
                                         setConfirmDeletion(undefined);
+                                        const itemDeleted = new CustomEvent("itemDeleted", {
+                                            detail: {
+                                                id: d.id
+                                            }
+                                        });
+                                        window.dispatchEvent(itemDeleted)
                                     } catch (error) {
                                         if(error instanceof Error){
                                             console.error(error.message)

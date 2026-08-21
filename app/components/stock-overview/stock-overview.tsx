@@ -1,21 +1,34 @@
-
+"use client";
 import { Product } from "@/app/types";
 import "./stock-overview.css"
+import { useEffect, useState } from "react";
 
 // Stock status overview-compontent. Formerly known as "product count section"
 export default function StockOverview({products}: {products: Product[]})
 {
+    const [productsState, setProductsState] = useState(products)
+
     const svgSize = 48;
 
-    const lowStock = products.filter(
+    const lowStock = productsState.filter(
         (product) => product.stock && product.stock > 0 && product.stock < 10,
     ).length;
     
-    const outOfStock = products.filter((product) => product.stock === 0).length;
+    const outOfStock = productsState.filter((product) => product.stock === 0).length;
     
-    const inStock = products.filter(
+    const inStock = productsState.filter(
         (product) => product.stock && product.stock >= 10,
     ).length;
+
+    useEffect(() => {
+        window.addEventListener("itemDeleted", (e:any) => {
+            const deletedItemId = e.detail.id;
+            setProductsState((products) => {
+                const filtered = products.filter(p => p.id !== deletedItemId);
+                return [...filtered];
+            })
+        })
+    }, [])
 
     return (
     <section className="stock-overview-section" aria-labelledby="stock-status-overview-header">
@@ -27,7 +40,7 @@ export default function StockOverview({products}: {products: Product[]})
             <h3 id="products-header">Products</h3>
 
             <div className="data--icon products-amount">
-                <span>{products.length}</span>
+                <span>{productsState.length}</span>
 
                 <svg xmlns="http://www.w3.org/2000/svg" width={svgSize} height={svgSize} viewBox="0 0 24 24" fill="currentColor"
                 stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
