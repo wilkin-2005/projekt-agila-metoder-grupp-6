@@ -64,7 +64,7 @@ export default function FilterSection() {
         const stock = String(inputData.get("stock") || "all");
 
         search ? params.set("search", search) : params.delete("search");
-        category !== "all" ? params.set("category", category) : params.delete("category");
+        category !== "all" ? params.set("categoryId", category) : params.delete("categoryId");
         stock !== "all" ? params.set("stock", stock) : params.delete("stock");
 
         router.replace(`${pathname}?${params.toString()}`, {scroll: false});
@@ -78,7 +78,7 @@ export default function FilterSection() {
                 defaultValue={searchParams.get("search") ?? ""}/>
             </div>
 
-            <select id="category" name="category" defaultValue={searchParams.get(`category`)?.toString()}>
+            <select id="category" name="category" defaultValue={searchParams.get(`categoryId`)?.toString()}>
                 {Categories.map((category: CategoryProps, index) => (
                 <option key={index} value={category.value}>{category.name}</option>
                 ))}
