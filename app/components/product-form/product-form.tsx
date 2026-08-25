@@ -28,14 +28,14 @@ export default function ProductForm()
                 {/* title: string; */}
                 <div className="form-group">
                     <label htmlFor="title"> Title (max 50 characters)<span className="required-text">*</span> </label>
-                    <input type="text" id="title" name="title" placeholder="Product title..." maxLength={50} required autoFocus />
+                    <input type="text" id="title" name="title" placeholder="Product title..." minLength={3} maxLength={50} required autoFocus />
                 </div>
 
 
                 {/* description: string; */}
                 <div className="form-group">
                     <label htmlFor="description"> Description (max 250 characters)<span className="required-text">*</span> </label>
-                    <textarea id="description" name="description" placeholder="Product description..." maxLength={250} rows={4} required />
+                    <textarea id="description" name="description" placeholder="Product description..." minLength={15} maxLength={250} rows={4} required />
                 </div>
 
 
@@ -44,8 +44,8 @@ export default function ProductForm()
                 <div className="form-group">
                     <label htmlFor="category"> Category<span className="required-text">*</span> </label>
 
-                    <select id="category" name="categoryId" defaultValue="default" >
-                        <option value="default" disabled > Choose category </option>
+                    <select id="category" name="categoryId" defaultValue="" required >
+                        <option value="" disabled > Choose category... </option>
 
                         <optgroup label="Clothing & Fashion">
                             <option value="8"> Men's Shirts </option>
@@ -91,7 +91,7 @@ export default function ProductForm()
                 {/* brand?: string; */}
                 <div className="form-group" >
                     <label htmlFor="brand" > Brand (max 30 characters)<span className="required-text">*</span> </label>
-                    <input type="text" id="brand" name="brand" placeholder="The products brand..." maxLength={30} />
+                    <input type="text" id="brand" name="brand" placeholder="The products brand..." minLength={2} maxLength={30} required />
                 </div>
 
 
@@ -117,7 +117,8 @@ export default function ProductForm()
                 {/* price: number; */}
                 <div className="form-group">
                     <label htmlFor="price">Price in euros (€)<span className="required-text">*</span> </label>
-                    <input type="number" id="price" name="price" placeholder="Product price..." min={0.1} step={0.01} required />
+                    <input type="number" id="price" name="price" placeholder="Product price..." min={0.1} step={0.01} max={1000000} required />
+                    {/* Maximum price: 1 million euros */}
                 </div>
 
 
@@ -131,7 +132,8 @@ export default function ProductForm()
                 {/* stock?: number; */}
                 <div className="form-group" >
                     <label htmlFor="stock" > Products in stock<span className="required-text">*</span> </label>
-                    <input type="number" id="stock" name="stock" placeholder="Number of products in stock..." min={0} required />
+                    <input type="number" id="stock" name="stock" placeholder="Number of products in stock..." min={0} max={1000000} required />
+                    {/* Maximum allowed stock: 1 million products */}
                 </div>
 
 
@@ -140,11 +142,11 @@ export default function ProductForm()
                     {/* Availability information should propably be calculated automatically from the stock number. */}
                     <label htmlFor="availability" > Product availability </label>
 
-                    <select id="availability" name="availabilityStatus" defaultValue="default">
-                        <option value="default" disabled>Set availability</option>
-                        <option value="in-stock">In Stock</option>
-                        <option value="low-stock">Low Stock</option>
-                        <option value="out-of-stock">Out of Stock</option>
+                    <select id="availability" name="availabilityStatus" defaultValue="" >
+                        <option value="" disabled   > Set availability...  </option>
+                        <option value="in-stock"    > In Stock             </option>
+                        <option value="low-stock"   > Low Stock            </option>
+                        <option value="out-of-stock"> Out of Stock         </option>
                     </select>
                 </div>
 
@@ -157,7 +159,8 @@ export default function ProductForm()
                 {/* Unknown weight unit used in API. We say it's kilograms */}
                 <div className="form-group" >
                     <label htmlFor="weight" > Product weight in kilograms (kg) </label>
-                    <input type="number" id="weight" name="weight" placeholder="The products weight..." min={0} />
+                    <input type="number" id="weight" name="weight" placeholder="The products weight..." min={0} max={200000000} />
+                    {/* Maximum allowed weight: 200 million kilogram = 200 000 metric tons. About the weight of the largest types of oil tankers :) */}
                 </div>
 
 
@@ -203,8 +206,8 @@ export default function ProductForm()
                     <legend> Product Review </legend>
                     {/* Maybe doesn't make sense that the admin can add review information to a products. Maybe remove later? */}
 
-                    <label htmlFor="review-rating"> Rating </label>
-                    <input type="number" id="review-rating" name="rating" min="1" max="5" placeholder="Rating (1-5)" />
+                    <label htmlFor="review-rating"> Rating (1-5) </label>
+                    <input type="number" id="review-rating" name="rating" min="1" max="5" placeholder="Your rating..." />
 
                     <label htmlFor="review-comment"> Comment (max 250 characters) </label>
                     <textarea id="review-comment" name="comment" placeholder="Leave a comment..."  maxLength={250} rows={3} />
@@ -227,7 +230,7 @@ export default function ProductForm()
                 {/* minimumOrderQuantity?: number; */}
                 <div className="form-group" >
                     <label htmlFor="minOrderQuantity" > Minimum order quantity </label>
-                    <input type="number" id="minOrderQuantity" name="minimumOrderQuantity" placeholder="Minimum amount of products per order..." min={1} />
+                    <input type="number" id="minOrderQuantity" name="minimumOrderQuantity" placeholder="Minimum amount of products per order..." min={1} max={999} />
                 </div>
 
 
@@ -242,13 +245,13 @@ export default function ProductForm()
                 <div className="form-group" >
                     <label htmlFor="returnPolicy"> Return policy </label>
 
-                    <select id="returnPolicy" name="returnPolicy" defaultValue="default">
-                        <option value="default" disabled > Select return policy </option>
-                        <option value="policy-none" >   No return policy </option>
-                        <option value="policy-7" >  7 days return policy </option>
-                        <option value="policy-30"> 30 days return policy </option>
-                        <option value="policy-60"> 60 days return policy </option>
-                        <option value="policy-90"> 90 days return policy </option>
+                    <select id="returnPolicy" name="returnPolicy" defaultValue="">
+                        <option value="" disabled > Select return policy...  </option>
+                        <option value="policy-none" >   No return policy     </option>
+                        <option value="policy-7" >  7 days return policy     </option>
+                        <option value="policy-30"> 30 days return policy     </option>
+                        <option value="policy-60"> 60 days return policy     </option>
+                        <option value="policy-90"> 90 days return policy     </option>
                     </select>
                 </div>
 
@@ -257,8 +260,8 @@ export default function ProductForm()
                 <div className="form-group" >
                     <label htmlFor="warrantyInfo" > Warranty information </label>
 
-                    <select id="warrantyInfo" name="warrantyInformation" defaultValue="default" >
-                        <option value="default" disabled > Select warranty length </option>
+                    <select id="warrantyInfo" name="warrantyInformation" defaultValue="" >
+                        <option value="" disabled > Select warranty length... </option>
 
                         <option value="warranty-none" > No warranty </option>
                         <option value="warranty-weeks-1" > 1 week warranty </option>
@@ -292,29 +295,29 @@ export default function ProductForm()
                     <p></p>
 
                     <label htmlFor="image1"> Product image 1 </label>
-                    <input type="url" id="image1" name="image1" placeholder="Paste link to image 1..." />
+                    <input type="url" id="image1" name="image1" placeholder="Paste link to image 1..." maxLength={2000} />
 
                     <label htmlFor="image2"> Product image 2 </label>
-                    <input type="url" id="image2" name="image2" placeholder="Paste link to image 2..." />
+                    <input type="url" id="image2" name="image2" placeholder="Paste link to image 2..." maxLength={2000} />
 
                     <label htmlFor="image3"> Product image 3 </label>
-                    <input type="url" id="image3" name="image3" placeholder="Paste link to image 3..." />
+                    <input type="url" id="image3" name="image3" placeholder="Paste link to image 3..." maxLength={2000} />
 
                     <label htmlFor="image4"> Product image 4 </label>
-                    <input type="url" id="image4" name="image4" placeholder="Paste link to image 4..." />
+                    <input type="url" id="image4" name="image4" placeholder="Paste link to image 4..." maxLength={2000} />
 
                     <label htmlFor="image5"> Product image 5 </label>
-                    <input type="url" id="image5" name="image5" placeholder="Paste link to image 5..." />
+                    <input type="url" id="image5" name="image5" placeholder="Paste link to image 5..." maxLength={2000} />
 
                     <label htmlFor="image6"> Product image 6 </label>
-                    <input type="url" id="image6" name="image6" placeholder="Paste link to image 6..." />
+                    <input type="url" id="image6" name="image6" placeholder="Paste link to image 6..." maxLength={2000} />
                 </fieldset>
 
 
                 {/* thumbnail: string; */}
                 <div className="form-group" >
                     <label htmlFor="thumbnail" > Product thumbnail <span className="minor-info"> (preferably 300 x 300 pixels)</span><span className="required-text">*</span> </label>
-                    <input type="url" id="thumbnail" name="thumbnail" placeholder="Paste link to small thumbnail image..." required />
+                    <input type="url" id="thumbnail" name="thumbnail" placeholder="Paste link to small thumbnail image..." maxLength={2000} required />
                 </div>
 
 
@@ -335,9 +338,7 @@ export default function ProductForm()
                 */}
 
 
-                {/* SUBMIT AND RESET BUTTONS */}
-                {/* <input type="reset" className="form-btn" value="Reset form" /> */}
-
+                {/* SUBMIT BUTTON */}
                 <input type="submit" className="form-btn" value="Submit" />
                 {/* Submit button should say "Create" or "Edit" or something simular when used on their respective pages */}
 
@@ -345,29 +346,3 @@ export default function ProductForm()
         </section>
     );
 }
-
-// Old SKU input fields:
-
-// sku?: string;
-// The SKU code is auto-generated
-/*  <div className="form-group" >
-        <label htmlFor="sku" > Stock-keeping unit (SKU) </label>
-
-        <div className="sku-input" >
-            <input type="text" name="sku1" id="sku" placeholder="ABC"
-                pattern="[A-Z]{3}" title="Three uppercase letters, A-Z" />
-            <span> - </span>
-
-            <input type="text" name="sku2" placeholder="DEF"
-                pattern="[A-Z]{3}" title="Three uppercase letters, A-Z" />
-            <span> - </span>
-
-            <input type="text" name="sku3" placeholder="GHI"
-                pattern="[A-Z]{3}" title="Three uppercase letters, A-Z" />
-            <span> - </span>
-
-            <input type="text" name="sku4" placeholder="123"
-                pattern="[0-9]{3}" title="Three numbers, 0-9" />
-        </div>
-    </div>
-*/
