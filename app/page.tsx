@@ -18,15 +18,16 @@ export default async function Home({ searchParams }: {
   const categoryId = _searchParams?.categoryId
   const stock = _searchParams?.stock
 
+  const stockOptions = {
+    "in-stock": { stock_gte: "11" },
+    "low-stock": { stock_gte: "1", stock_lte: "10" },
+    "out-stock": { stock: "0" },
+  }[stock ?? ""];
+
   const options = {
     _limit: '6', _page: _page,
-    ...(categoryId ? { categoryId } : {}),
-    ...(stock === "in-stock"
-      ? { stock_gte: "11" }
-      : stock === "low-stock"
-        ? { stock_gte: "1", stock_lte: "10" }
-        : stock === "out-stock"
-          ? { stock: "0" } : {})
+    ...(categoryId && { categoryId }),
+    ...stockOptions,
   }
 
   const { products, total, page, pages, limit }: ProductsResponse = await getProducts(options)
