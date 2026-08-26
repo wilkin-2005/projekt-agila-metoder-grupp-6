@@ -1,0 +1,65 @@
+.error-page {
+  width: 100%;
+  flex: 1;
+  margin: 3rem auto;
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-primary);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.error-page h2 {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-tight);
+}
+
+.error-page p {
+  margin: 0.75rem 0 1.5rem;
+  color: var(--text-secondary);
+}
+
+.error-page__button,
+.error-page__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.625rem 1rem;
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease;
+}
+
+.error-page__button {
+  border: 1px solid var(--color-indigo-600);
+  background: var(--color-indigo-500);
+  color: var(--text-inverse);
+  cursor: pointer;
+  font: inherit;
+}
+
+.error-page__button:hover {
+  background: var(--color-indigo-600);
+}
+
+.error-page__link {
+  border: 1px solid var(--color-indigo-500);
+  color: var(--color-indigo-600);
+}
+
+.error-page__link:hover {
+  background: var(--color-indigo-50);
+}
+
+.error-page__button:focus-visible,
+.error-page__link:focus-visible {
+  outline: 3px solid var(--border-focus);
+  outline-offset: 2px;
+}

@@ -1,18 +1,20 @@
 "use client";
 
+import ErrorPage from "./components/error-page/ErrorPage";
+
 export default function Error({
-  reset,
+  unstable_retry,
 }: {
   error: Error & { digest?: string };
-  reset: () => void;
+  unstable_retry: () => void;
 }) {
   return (
-    <main role="alert" className="centered-section">
-      <h1>Something went wrong</h1>
-      <p>We could not load this page. Please try again.</p>
-      <button type="button" onClick={() => reset()}>
+    <ErrorPage
+      title="Something went wrong"
+      message="We could not load this page. Please try again."
+      action={<button type="button" className="error-page__button" onClick={() => unstable_retry()}>
         Try again
-      </button>
-    </main>
+      </button>}
+    />
   );
 }
