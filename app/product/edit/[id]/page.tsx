@@ -1,4 +1,10 @@
 import './page.css'
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Edit - Inventory Management",
+  description: "Edit existing product on the website.",
+};
 
 export default async function Page({params}: {params: Promise<{ id: string }>}) {
     const { id } = await params;

@@ -1,6 +1,12 @@
+import './page.css'
 import ProductForm from '@/app/components/product-form/product-form';
 import { redirect } from 'next/navigation';
-import './page.css'
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Add - Inventory Management",
+  description: "Add new product to the website.",
+};
 
 async function addProduct(formData: FormData) {
     "use server";
