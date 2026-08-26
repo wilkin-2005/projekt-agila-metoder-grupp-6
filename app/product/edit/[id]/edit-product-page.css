@@ -1,15 +1,19 @@
 
-.EditProduct__Title{
-    font-size: 1.2rem;
-    font-weight: 600;
+.edit-page-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
 }
 
-.EditProduct__Header{
+.edit-page-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
 
-.EditProduct__Header a{
-    color: blue;
+    /* img {
+        max-height: 100px;
+    } */
+
+    a {
+        color: var(--icon-primary);
+    }
 }

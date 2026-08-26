@@ -1,22 +1,23 @@
 
 import Form from "next/form";
 import "./product-form.css";
-// import { Product, Category } from "@/app/types";
+import { editProductAction } from "@/app/lib/actions";
+import type { Product } from "@/app/types";
 
 
 
 // A generic form component compatible with both the Add product-page and Edit product-page.
-export default function EditProductForm()
+export default function EditProductForm( {product}:{product: Product} )
 {
+    const tags = product.tags;
 
     return (
         <section aria-labelledby="form-header">
-            <h2 id="form-header" > Edit product </h2>
 
-            <Form action="" className="product-form" aria-labelledby="form-header" >
+            <Form action={editProductAction} className="product-form" aria-labelledby="form-header" >
 
                 <p> <span className="required-text">*</span>Required fields</p>
-
+                
 
                 <h3 className="form-subheader"> Basic Information </h3>
                 {/* ========== ========== ========== ========== ========== ========== */}
@@ -28,14 +29,16 @@ export default function EditProductForm()
                 {/* title: string; */}
                 <div className="form-group">
                     <label htmlFor="title"> Title (max 50 characters)<span className="required-text">*</span> </label>
-                    <input type="text" id="title" name="title" placeholder="Product title..." minLength={3} maxLength={50} required autoFocus />
+                    <input type="text" id="title" name="title" placeholder="Product title..." defaultValue={product.title}
+                        minLength={3} maxLength={50} required autoFocus />
                 </div>
 
 
                 {/* description: string; */}
                 <div className="form-group">
                     <label htmlFor="description"> Description (max 250 characters)<span className="required-text">*</span> </label>
-                    <textarea id="description" name="description" placeholder="Product description..." minLength={15} maxLength={250} rows={4} required />
+                    <textarea id="description" name="description" placeholder="Product description..." defaultValue={product.description}
+                        minLength={15} maxLength={250} rows={4} required />
                 </div>
 
 
@@ -44,7 +47,7 @@ export default function EditProductForm()
                 <div className="form-group">
                     <label htmlFor="category"> Category<span className="required-text">*</span> </label>
 
-                    <select id="category" name="categoryId" defaultValue="" required >
+                    <select id="category" name="categoryId" defaultValue={product.categoryId} required >
                         <option value="" disabled > Choose category... </option>
 
                         <optgroup label="Clothing & Fashion">
@@ -91,7 +94,8 @@ export default function EditProductForm()
                 {/* brand?: string; */}
                 <div className="form-group" >
                     <label htmlFor="brand" > Brand (max 30 characters)<span className="required-text">*</span> </label>
-                    <input type="text" id="brand" name="brand" placeholder="The products brand..." minLength={2} maxLength={30} required />
+                    <input type="text" id="brand" name="brand" placeholder="The products brand..." defaultValue={product.brand}
+                        minLength={2} maxLength={30} required />
                 </div>
 
 
@@ -100,13 +104,13 @@ export default function EditProductForm()
                     <legend> Add 1-3 tags </legend>
 
                     <label htmlFor="tag1" > Product tag 1 </label>
-                    <input type="text" id="tag1" name="tag1" placeholder="Product tag 1..." maxLength={30} />
+                    <input type="text" id="tag1" name="tag1" placeholder="Product tag 1..." defaultValue={ (tags) ? tags[0] : "" } maxLength={30} />
 
                     <label htmlFor="tag2" > Product tag 2 </label>
-                    <input type="text" id="tag2" name="tag2" placeholder="Product tag 2..." maxLength={30} />
+                    <input type="text" id="tag2" name="tag2" placeholder="Product tag 2..." defaultValue={ (tags) ? tags[1] : "" } maxLength={30} />
 
                     <label htmlFor="tag3" > Product tag 3 </label>
-                    <input type="text" id="tag3" name="tag3" placeholder="Product tag 3..." maxLength={30} />
+                    <input type="text" id="tag3" name="tag3" placeholder="Product tag 3..." defaultValue={ (tags) ? tags[2] : "" } maxLength={30} />
                 </fieldset>
 
 
