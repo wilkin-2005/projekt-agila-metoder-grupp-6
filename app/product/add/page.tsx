@@ -5,7 +5,12 @@ import './page.css'
 async function addProduct(formData: FormData) {
     "use server";
 
-    const values = Object.fromEntries(formData.entries());
+    const values = Object.fromEntries(
+        Array.from(formData.entries(), ([name, value]) => [
+            name,
+            typeof value === "string" ? value.trim() : value,
+        ])
+    );
     const tags = ["tag1", "tag2", "tag3"]
         .map((name) => String(values[name] ?? "").trim())
         .filter(Boolean);
