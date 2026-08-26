@@ -74,22 +74,32 @@ export default function FilterSection() {
     <section className="filter-section">
         <form className="filter-form" onSubmit={filterSearch}>
             <div className="form-search">
+                <label htmlFor="search">Search</label>
                 <input type="text" className="search-field" id="search" name="search" placeholder="Search products" 
                 defaultValue={searchParams.get("search") ?? ""}/>
             </div>
 
-            <select id="category" name="category" defaultValue={searchParams.get(`categoryId`)?.toString()}>
-                {Categories.map((category: CategoryProps, index) => (
-                <option key={index} value={category.value}>{category.name}</option>
-                ))}
-            </select>
-            <select id="stock" name="stock" defaultValue={searchParams.get(`stock`)?.toString()}>
-                {StockStatus.map((status: StatusProps, index) => (
-                <option key={index} value={status.value}>{status.name}</option>
-                ))}
-            </select>
+            <div className="form-category">
+                <label htmlFor="category">Category</label>
+                <select id="category" name="category" defaultValue={searchParams.get(`categoryId`)?.toString()}>
+                    {Categories.map((category: CategoryProps, index) => (
+                    <option key={index} value={category.value}>{category.name}</option>
+                    ))}
+                </select>
+            </div>
+
+            <div className="form-stock">
+                <label htmlFor="stock">Stock</label>
+                <select id="stock" name="stock" defaultValue={searchParams.get(`stock`)?.toString()}>
+                    {StockStatus.map((status: StatusProps, index) => (
+                    <option key={index} value={status.value}>{status.name}</option>
+                    ))}
+                </select>
+            </div>
             
-            <button type="submit" className="filter-button"><img width={23} src="funnel.png" alt="" />Filter</button>
+            <div className="form-button">
+                <button type="submit" className="filter-button"><img width={23} src="funnel.png" alt="" />Filter</button>
+            </div>
         </form>
     </section>
     )
