@@ -1,19 +1,18 @@
-
 import Form from "next/form";
 import "./product-form.css";
-// import { Product, Category } from "@/app/types";
 
-
+type ProductFormProps = {
+    action: (formData: FormData) => Promise<void>;
+};
 
 // A generic form component compatible with both the Add product-page and Edit product-page.
-export default function ProductForm()
+export default function ProductForm({ action }: ProductFormProps)
 {
-
     return (
         <section aria-labelledby="form-header">
             <h2 id="form-header" > Add/Edit product </h2>
 
-            <Form action="" className="product-form" aria-labelledby="form-header" >
+            <Form action={action} className="product-form" aria-labelledby="form-header" >
 
                 <p> <span className="required-text">*</span>Required fields</p>
 
