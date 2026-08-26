@@ -84,7 +84,7 @@ export default function ListTable({data,columns,page}: {data:Record<string, any>
 function mapper(obj: Record<string, any>, column: string) {
     const value = obj[column];
     if (column === "title") {
-        return <div className="ListTable__Title"><img alt="" width={45} height={45} src={obj["images"][0]}></img> <div> <strong>{value}</strong> <p className="ListTable__Sku">{obj["sku"]}</p> </div> </div>
+        return <div className="ListTable__Title"><img alt="" width={45} height={45} src={obj["thumbnail"] || obj["images"][0]}></img> <div> <strong>{value}</strong> <p className="ListTable__Sku">{obj["sku"]}</p> </div> </div>
     }
     if (column === "category") {
         return value.name
