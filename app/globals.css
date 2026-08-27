@@ -78,9 +78,11 @@ body {
 .centered-section {
   background-color: var(--surface-primary);
   max-width: 1080px;
-  padding: 1rem;
   margin-inline: auto;
   margin-block: 1rem;
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .page-header {

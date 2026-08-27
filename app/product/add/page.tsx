@@ -51,8 +51,9 @@ async function addProduct(formData: FormData) {
 
 export default function Page() {
     return (
-        <main className="AddProduct">
+        <main>
             <section className="centered-section">
+                <div className='AddProduct'>
                 <div className='AddProduct__Header'>
                     <h1 className="AddProduct__Title">
                         Add product
@@ -62,6 +63,7 @@ export default function Page() {
                 <section>
                     <ProductForm action={addProduct} />
                 </section>
+                </div>
             </section>
         </main>
     );
