@@ -27,13 +27,13 @@ export default async function EditProductPage( {params}: { params: Promise<{ id:
 
             <header className="edit-page-header" >
                 {/* <img src={product.thumbnail} alt="" /> */}
-                
+
                 <h2 id="form-header" className="edit-page-title" > Edit product: {product.title} </h2>
 
                 <a href='/'>Go back to products list</a>
             </header>
 
-            <section>
+            <section className="edit-form-section">
 
                 <EditProductForm product={product} />
 
