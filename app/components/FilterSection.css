@@ -29,6 +29,12 @@
     height: 100%;
     gap: 4px;
     padding: 0.5rem;
+    &:hover, &:focus-visible {
+        background-color: hsl(0, 0%, 83%);
+        color: hsl(0, 0%, 100%);
+        cursor: pointer;
+        transition: 0.1s;
+    }
 }
 
 .filter-button:hover{
