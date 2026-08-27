@@ -6,6 +6,8 @@ import { Fragment } from 'react/jsx-runtime';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Pagination({page, pages}: {page:number,pages:number}){
+    const searchParams = useSearchParams();
+ 
     const currentPage = page;
     const router = useRouter();
     const pathname = usePathname();
@@ -27,10 +29,9 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
     return <ul className='Pagination'>
                     <li className='Pagination__Item' onClick={() => {
                         if(currentPage === 1) return;
-                        const searchParams = useSearchParams();
                         const params = new URLSearchParams(searchParams);
-                        params.set("page", String(currentPage + 1));
-                        router.push(`${pathname}?${params.toString()}`);
+                        params.set("page", (currentPage-1).toString());
+                        router.push(pathname + '?' +params.toString(), {scroll:false});
                     }}>
                         <ChevronLeft/>
                     </li>
@@ -38,9 +39,9 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
                      className={`Pagination__Item ${pageLimitStart < 2 ? "Pagination__Item--hidden" : ""}`}
                      onClick={() => {
                         if(currentPage === 1) return;
-                        const params = new URLSearchParams();
+                        const params = new URLSearchParams(searchParams);
                         params.set("page", (1).toString());
-                        router.push(pathname + '?' +params.toString());
+                        router.push(pathname + '?' +params.toString(), {scroll:false});
                     }}>1</li>
                     <li className={`Pagination__ExtraPage ${pageLimitStart <= 2 ? "Pagination__ExtraPage--hidden" : ""}`}>
                         <p>...</p>
@@ -60,9 +61,9 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
                         }
                         <li className={`Pagination__Item ${currentPage === i+1 ? 'Pagination__Item--current': ''}`}
                          onClick={() =>{if(currentPage === i+1) return;
-                            const params = new URLSearchParams();
+                            const params = new URLSearchParams(searchParams);
                             params.set("page", (i+1).toString());
-                            router.push(pathname + '?' +params.toString());
+                            router.push(pathname + '?' +params.toString(), {scroll:false});
                         }} 
                         >
                             <p>{i+1}</p>
@@ -82,9 +83,9 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
                         className={`Pagination__Item ${pageLimitEnd > pages-1 ? "Pagination__Item--hidden" : ""}`}
                         onClick={() => {
                             if(currentPage === pages) return;
-                            const params = new URLSearchParams();
+                            const params = new URLSearchParams(searchParams);
                             params.set("page", (pages).toString());
-                            router.push(pathname + '?' +params.toString());
+                            router.push(pathname + '?' +params.toString(), {scroll:false});
                         }}>
                         {pages}
                     </li>
@@ -93,9 +94,9 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
 
                 <li className='Pagination__Item' onClick={() => {
                     if(currentPage === pages) return;
-                    const params = new URLSearchParams();
+                    const params = new URLSearchParams(searchParams);
                     params.set("page", (currentPage+1).toString());
-                    router.push(pathname + '?' +params.toString());
+                    router.push(pathname + '?' +params.toString(), {scroll:false});
                 }}>
                     <ChevronRight/> 
                 </li>

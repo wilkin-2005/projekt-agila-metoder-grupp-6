@@ -13,9 +13,10 @@ type SearchParams = {
   stock_lte?: string
 }
 
+const BASE_URL = 'http://localhost'
+const PORT = 4000
+
 export async function getProducts(options?: SearchParams): Promise<ProductsResponse> {
-  const BASE_URL = 'http://localhost'
-  const PORT = 4000
 
   const params = new URLSearchParams({
     _limit: String(6),
@@ -33,4 +34,18 @@ export async function getProducts(options?: SearchParams): Promise<ProductsRespo
 
   const products = response.json()
   return products
+}
+
+export async function deleteProduct(id:number): Promise<undefined> {
+  if(!id){
+    return;
+  }
+
+  const response = await fetch(`${BASE_URL}:${PORT}/products/${id}`, {method:"DELETE"})
+
+  if (!response.ok) {
+    throw new Error('Failed to delete product');
+  }
+
+  return response.json()
 }
