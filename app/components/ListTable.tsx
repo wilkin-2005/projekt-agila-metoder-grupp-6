@@ -1,23 +1,16 @@
-"use client"
+"use client";
 import { useRouter } from 'next/navigation';
 import './ListTable.css'
 import { deleteProduct } from '../lib/products';
-import { useEffect, useState } from 'react';
 import { Pencil, Trash2 } from 'lucide-react';
 
-export default function ListTable({data,columns,page}: {data:Record<string, any>[], columns:string[],page:number}){
+export default function ListTable({data,columns}: {data:Record<string, any>[], columns:string[]}){
     const router = useRouter();
-    const [deletedProducts, setDeletedProducts] = useState<Record<string, boolean>>({});
-    const [confirmDeletion, setConfirmDeletion] = useState();
 
-    const extraItemsNeeded = 6 - data.length + Object.keys(deletedProducts).length;
+    const extraItemsNeeded = 6 - data.length;
     const extra: number[] = [];
     extra.length = extraItemsNeeded;
     extra.fill(0);
-
-    useEffect(() => {
-        setDeletedProducts({});
-    }, [page])
 
     return <table className="ListTable">
         <thead>
@@ -41,19 +34,17 @@ export default function ListTable({data,columns,page}: {data:Record<string, any>
 
             {
                 data.map(d =>
-                    <tr key={d.id} className={`ListTable__ListItem ${deletedProducts[d.id] ? 'ListTable__ListItem--deleted' : ''}`} data-category-id={d.categoryId}>
+                    <tr key={d.id} className={`ListTable__ListItem`} data-category-id={d.categoryId}>
                         {columns.map((column =>
                             <td key={column}>{!mapper ? d[column] : mapper(d, column)}</td>
                         ))}
                         <td key={"actions"}>
                             <div className="ListTable__Actions">
                                 <Pencil onClick={() => router.push(`product/edit/${d.id}`)}/>
-                                    <Trash2 onClick={async () => {
+                                <Trash2 onClick={async () => {
                                     if(window.confirm('Delete ' + d.title + "?")){
                                         try {
                                         await deleteProduct(d.id)
-                                        setDeletedProducts((obj) => ({...obj, [d.id]: true}));   
-                                        setConfirmDeletion(undefined);
                                         router.refresh();
                                     } catch (error) {
                                         if(error instanceof Error){
