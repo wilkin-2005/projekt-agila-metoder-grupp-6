@@ -1,6 +1,7 @@
 import type { ProductsResponse, StockStats } from '../types'
 
 type SearchParams = {
+  q?: string
   _limit?: string
   _sort?: string
   _order?: string
