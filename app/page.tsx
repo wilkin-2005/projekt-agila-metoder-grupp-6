@@ -27,7 +27,7 @@ export default async function Home({ searchParams }: {
   }[stock ?? ""];
 
   const options = {
-    _limit: '6', 
+    _limit: '8', 
     _page,
     ...(search ? { q: search } : {}),
     ...(categoryId ? { categoryId } : {}),
