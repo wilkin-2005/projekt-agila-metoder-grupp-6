@@ -2,7 +2,7 @@ import FilterSection from "./components/FilterSection";
 import ListTable from "./components/ListTable";
 import Pagination from "./components/Pagination";
 import StockOverview from "@/app/components//stock-overview/stock-overview";
-import { getProducts } from "./lib/products";
+import { getProductStats, getProducts } from "./lib/products";
 import type { ProductsResponse } from "./types";
 
 export default async function Home({ searchParams }: {
@@ -30,15 +30,16 @@ export default async function Home({ searchParams }: {
     ...stockOptions,
   }
 
-  const { products, total, page, pages, limit }: ProductsResponse = await getProducts(options)
-
-  // get all products to calculate stock count
-  const { products: allProducts }: ProductsResponse = await getProducts({ _limit: "" });
+  const [productsResponse, stats] = await Promise.all([
+    getProducts(options),
+    getProductStats(),
+  ])
+  const { products, total, page, pages, limit }: ProductsResponse = productsResponse
 
   return (
     <main>
       <section>
-        <StockOverview products={allProducts} />
+        <StockOverview stats={stats} />
       </section>
 
       <section className="centered-section">

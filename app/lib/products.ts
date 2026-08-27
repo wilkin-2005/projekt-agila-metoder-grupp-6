@@ -1,4 +1,4 @@
-import type { ProductsResponse } from '../types'
+import type { ProductsResponse, StockStats } from '../types'
 
 type SearchParams = {
   _limit?: string
@@ -33,6 +33,12 @@ export async function getProducts(options?: SearchParams): Promise<ProductsRespo
 
   const products = response.json()
   return products
+}
+
+export async function getProductStats(): Promise<StockStats> {
+  const response = await fetch(`${BASE_URL}:${PORT}/products/stats`)
+  if (!response.ok) throw new Error('Failed to load product stats')
+  return response.json()
 }
 
 export async function deleteProduct(id:number): Promise<undefined> {
