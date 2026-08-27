@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import './ListTable.css'
 import { deleteProduct } from '../lib/products';
 import { useEffect, useState } from 'react';
+import { Pencil, Trash2 } from 'lucide-react';
 
 export default function ListTable({data,columns,page}: {data:Record<string, any>[], columns:string[],page:number}){
     const router = useRouter();
@@ -46,8 +47,8 @@ export default function ListTable({data,columns,page}: {data:Record<string, any>
                         ))}
                         <td key={"actions"}>
                             <div className="ListTable__Actions">
-                                <img width={23} alt='edit-icon' onClick={() => router.push(`product/edit/${d.id}`)} src="edit.png"></img>
-                                <img width={23} alt='delete-icon' onClick={async () => {
+                                <Pencil onClick={() => router.push(`product/edit/${d.id}`)}/>
+                                    <Trash2 onClick={async () => {
                                     if(window.confirm('Delete ' + d.title + "?")){
                                         try {
                                         await deleteProduct(d.id)
@@ -65,8 +66,7 @@ export default function ListTable({data,columns,page}: {data:Record<string, any>
                                         }
                                     }
                                     }
-                                }
-                                } src="delete.png"></img>
+                                }} />
                         </div>
                     </td>
                     </tr>
