@@ -43,7 +43,7 @@
 
   /* Borders */
   --border-subtle: var(--color-gray-100);
-  --border-default: var(--color-gray-200);
+  --border-default: var(--color-gray-300);
   --border-strong: var(--color-gray-300);
   --border-focus: var(--color-indigo-500);
 
