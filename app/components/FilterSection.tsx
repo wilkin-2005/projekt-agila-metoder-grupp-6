@@ -1,4 +1,5 @@
 "use client"
+import { Funnel } from "lucide-react";
 import "./FilterSection.css";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { SubmitEvent } from "react";
@@ -98,7 +99,8 @@ export default function FilterSection() {
             </div>
             
             <div className="form-button">
-                <button type="submit" className="filter-button"><img width={23} src="funnel.png" alt="" />Filter</button>
+                <button type="submit" className="filter-button">
+                    <Funnel/>Filter</button>
             </div>
         </form>
     </section>

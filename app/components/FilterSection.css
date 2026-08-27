@@ -52,10 +52,6 @@
     align-self: flex-end;
 }
 
-.form-button img {
-    max-width: none;
-}
-
 .form-search {
     width: 100%;
 }
