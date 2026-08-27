@@ -9,16 +9,16 @@ export default async function Home({ searchParams }: {
     searchParams?: Promise<{
     page?: string;
     search?: string;
-    categoryId?: string
-    stock?: string
+    categoryId?: string;
+    stock?: string;
   }>
 }) {
 
   const _searchParams = await searchParams;
   const _page = _searchParams?.page || "1";
   const search = _searchParams?.search;
-  const categoryId = _searchParams?.categoryId
-  const stock = _searchParams?.stock
+  const categoryId = _searchParams?.categoryId;
+  const stock = _searchParams?.stock;
 
   const stockOptions = {
     "in-stock": { stock_gte: "11" },
@@ -34,7 +34,7 @@ export default async function Home({ searchParams }: {
     ...stockOptions,
   };
 
-  const { products, total, page, pages, limit }: ProductsResponse = await getProducts(options)
+  const { products, total, page, pages, limit }: ProductsResponse = await getProducts(options);
 
   // get all products to calculate stock count
   const { products: allProducts }: ProductsResponse = await getProducts({ _limit: "" });
