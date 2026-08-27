@@ -7,7 +7,7 @@ import { Pencil, Trash2 } from 'lucide-react';
 export default function ListTable({data,columns}: {data:Record<string, any>[], columns:string[]}){
     const router = useRouter();
 
-    const extraItemsNeeded = 6 - data.length;
+    const extraItemsNeeded = 8 - data.length - (data.length === 0 ? 1 : 0);
     const extra: number[] = [];
     extra.length = extraItemsNeeded;
     extra.fill(0);
@@ -27,8 +27,8 @@ export default function ListTable({data,columns}: {data:Record<string, any>[], c
         <tbody>
 
             {
-                data.length === 0 ? <tr>
-                    <td>No data found</td>
+                data.length === 0 ? <tr className={`ListTable__ListItem`}>
+                    <td ><p className='ListTable__NoDataText'>No data found</p></td>
                 </tr>
                     : null}
 

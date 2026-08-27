@@ -37,6 +37,10 @@
     height: 60px;
 }
 
+.ListTable__NoDataText{
+    height: 60px;
+}
+
 .ListTable td, .ListTable th{
     padding:12px;
 }

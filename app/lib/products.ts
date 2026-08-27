@@ -19,7 +19,7 @@ const PORT = 4000
 export async function getProducts(options?: SearchParams): Promise<ProductsResponse> {
 
   const params = new URLSearchParams({
-    _limit: String(6),
+    _limit: String(8),
     _sort: 'id',
     _order: 'desc',
     _expand: 'category',
