@@ -91,9 +91,8 @@
     align-items: center;
 }
 
-.ListTable__Actions img{
+.ListTable__Actions svg{
     cursor: pointer;
-    filter: invert(1);
 }
 
 .ListTable__Actions button:hover{
