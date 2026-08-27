@@ -6,8 +6,9 @@ import { getProducts } from "./lib/products";
 import type { ProductsResponse } from "./types";
 
 export default async function Home({ searchParams }: {
-  searchParams?: Promise<{
+    searchParams?: Promise<{
     page?: string;
+    search?: string;
     categoryId?: string
     stock?: string
   }>
@@ -15,6 +16,7 @@ export default async function Home({ searchParams }: {
 
   const _searchParams = await searchParams;
   const _page = _searchParams?.page || "1";
+  const search = _searchParams?.search;
   const categoryId = _searchParams?.categoryId
   const stock = _searchParams?.stock
 
@@ -25,10 +27,12 @@ export default async function Home({ searchParams }: {
   }[stock ?? ""];
 
   const options = {
-    _limit: '6', _page: _page,
-    ...(categoryId && { categoryId }),
+    _limit: '6', 
+    _page,
+    ...(search ? { q: search } : {}),
+    ...(categoryId ? { categoryId } : {}),
     ...stockOptions,
-  }
+  };
 
   const { products, total, page, pages, limit }: ProductsResponse = await getProducts(options)
 
