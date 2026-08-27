@@ -8,7 +8,7 @@ h2#form-header {
     margin-block-start: 1rem;
 
     max-width: 600px;
-    border-bottom: 1px solid var(--text-muted);
+    border-bottom: 2px solid var(--text-muted);
 
     font-size: 1.25rem;
     font-weight: var(--font-weight-bold);
