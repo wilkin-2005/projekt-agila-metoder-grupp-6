@@ -2,10 +2,6 @@
     display: flex;
     width: 100%;
     gap: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border: 2px solid lightgray;
-    border-radius: 8px;
 }
 
 .filter-form {
@@ -33,7 +29,6 @@
     height: 100%;
     gap: 4px;
     padding: 0.5rem;
-
     &:hover, &:focus-visible {
         background-color: hsl(0, 0%, 83%);
         color: hsl(0, 0%, 100%);
@@ -42,10 +37,15 @@
     }
 }
 
+.filter-button:hover{
+    cursor: pointer;
+}
+
 .form-button {
-    background-color: hsla(0, 0%, 79%, 0.302);
-    border: 4px solid hsl(0, 0%, 83%);
+    background-color: white;
+    border: 1px solid hsl(0, 0%, 83%);
     border-radius: 4px;
+    align-self: flex-end;
 }
 
 .form-search {
