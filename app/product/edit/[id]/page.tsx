@@ -12,8 +12,9 @@ export default async function Page({params}: {params: Promise<{ id: string }>}) 
     // get product with id from api here
 
   return (
-    <main className="EditProduct">
+    <main>
         <section className="centered-section">
+            <div className='EditProduct'>
             <div className='EditProduct__Header'>
         <h1 className="EditProduct__Title">
             Edit product
@@ -25,6 +26,7 @@ export default async function Page({params}: {params: Promise<{ id: string }>}) 
                 /* add product form here */
             }
         </section>
+        </div>
         </section>
     </main>
   );

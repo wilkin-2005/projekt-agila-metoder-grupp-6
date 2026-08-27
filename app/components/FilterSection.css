@@ -2,10 +2,6 @@
     display: flex;
     width: 100%;
     gap: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border: 2px solid lightgray;
-    border-radius: 8px;
 }
 
 .filter-form {
@@ -16,21 +12,46 @@
     width: 100%;
 }
 
-.filter-form > * {
+.filter-form label {
+    font-weight: bold;
+}
+
+.filter-form input, .filter-form select {
     border: 1px solid lightgray;
     border-radius: 4px;
     padding: 0.25rem;
 }
 
 .filter-button {
-    display: inline-flex;
-    gap: 0.5rem;
-
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 4px;
+    padding: 0.5rem;
     &:hover, &:focus-visible {
+        background-color: hsl(0, 0%, 83%);
+        color: hsl(0, 0%, 100%);
         cursor: pointer;
+        transition: 0.1s;
     }
 }
 
+.filter-button:hover{
+    cursor: pointer;
+}
+
+.form-button {
+    background-color: white;
+    border: 1px solid hsl(0, 0%, 83%);
+    border-radius: 4px;
+    align-self: flex-end;
+}
+
 .form-search {
+    width: 100%;
+}
+
+.form-search input {
     width: 100%;
 }

@@ -29,7 +29,7 @@ form.product-form {
 
         background-color: var(--surface-primary);
         accent-color: var(--color-indigo-500);
-        border: 2px solid var(--border-default);
+        border: 1px solid var(--border-default);
         border-radius: var(--radius-sm);
 
         padding: 0.5rem;
@@ -72,7 +72,7 @@ form.product-form {
 
     /* Styling for the fieldset with the product dimension inputs */
     fieldset {
-        border: 2px solid var(--border-default);
+        border: 1px solid var(--border-default);
 
         padding-inline: 1rem;
         padding-block-end: 0.5rem;
@@ -94,7 +94,7 @@ form.product-form {
 
         color: var(--text-primary);
         background-color: var(--surface-secondary);
-        border: 2px solid var(--border-default);
+        border: 1px solid var(--border-default);
 
         &:hover, &:focus-visible {
             color: var(--text-secondary);

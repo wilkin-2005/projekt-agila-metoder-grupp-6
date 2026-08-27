@@ -4,6 +4,8 @@
     justify-content: center;
     gap: 8px;
     padding:1rem;
+    border-top: 1px solid var(--border-default);
+    background-color: var(--color-neutral-100);
 }
 
 .Pagination__Item{

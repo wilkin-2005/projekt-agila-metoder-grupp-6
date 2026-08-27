@@ -1,5 +1,4 @@
 "use client";
-
 import './Pagination.css';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { usePathname } from 'next/navigation';
