@@ -53,3 +53,10 @@ export interface ProductsResponse {
   page: number;
   pages: number;
 }
+
+export interface StockStats {
+  total: number;
+  inStock: number;
+  lowStock: number;
+  outOfStock: number;
+}

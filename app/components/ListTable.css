@@ -34,7 +34,11 @@
 
 
 .ListTable__Title{
-    height: 150px;
+    height: 60px;
+}
+
+.ListTable__NoDataText{
+    height: 60px;
 }
 
 .ListTable td, .ListTable th{
@@ -91,9 +95,8 @@
     align-items: center;
 }
 
-.ListTable__Actions img{
+.ListTable__Actions svg{
     cursor: pointer;
-    filter: invert(1);
 }
 
 .ListTable__Actions button:hover{

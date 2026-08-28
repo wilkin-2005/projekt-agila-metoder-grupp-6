@@ -1,7 +1,8 @@
 
-import type { ProductsResponse, Product } from "../types";
+import type { ProductsResponse, Product, StockStats } from "../types";
 
 type SearchParams = {
+  q?: string
   _limit?: string
   _sort?: string
   _order?: string
@@ -21,7 +22,7 @@ const PORT = 4000
 export async function getProducts(options?: SearchParams): Promise<ProductsResponse> {
 
   const params = new URLSearchParams({
-    _limit: String(6),
+    _limit: String(8),
     _sort: 'id',
     _order: 'desc',
     _expand: 'category',
@@ -50,6 +51,12 @@ export async function getProductById(id: number): Promise<Product>
 
 
 // 🗑️ Deletes a product based on ID
+export async function getProductStats(): Promise<StockStats> {
+  const response = await fetch(`${BASE_URL}:${PORT}/products/stats`)
+  if (!response.ok) throw new Error('Failed to load product stats')
+  return response.json()
+}
+
 export async function deleteProduct(id:number): Promise<undefined> {
   if(!id){
     return;

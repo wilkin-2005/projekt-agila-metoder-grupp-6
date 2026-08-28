@@ -1,3 +1,10 @@
+import './page.css'
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Edit - Inventory Management",
+  description: "Edit existing product on the website.",
+};
 
 import { notFound } from "next/navigation";
 

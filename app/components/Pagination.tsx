@@ -1,12 +1,13 @@
 "use client";
-
 import './Pagination.css';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 import { Fragment } from 'react/jsx-runtime';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function Pagination({page, pages}: {page:number,pages:number}){
+    const searchParams = useSearchParams();
+ 
     const currentPage = page;
     const router = useRouter();
     const pathname = usePathname();
@@ -28,7 +29,7 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
     return <ul className='Pagination'>
                     <li className='Pagination__Item' onClick={() => {
                         if(currentPage === 1) return;
-                        const params = new URLSearchParams();
+                        const params = new URLSearchParams(searchParams);
                         params.set("page", (currentPage-1).toString());
                         router.push(pathname + '?' +params.toString(), {scroll:false});
                     }}>
@@ -38,7 +39,7 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
                      className={`Pagination__Item ${pageLimitStart < 2 ? "Pagination__Item--hidden" : ""}`}
                      onClick={() => {
                         if(currentPage === 1) return;
-                        const params = new URLSearchParams();
+                        const params = new URLSearchParams(searchParams);
                         params.set("page", (1).toString());
                         router.push(pathname + '?' +params.toString(), {scroll:false});
                     }}>1</li>
@@ -60,7 +61,7 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
                         }
                         <li className={`Pagination__Item ${currentPage === i+1 ? 'Pagination__Item--current': ''}`}
                          onClick={() =>{if(currentPage === i+1) return;
-                            const params = new URLSearchParams();
+                            const params = new URLSearchParams(searchParams);
                             params.set("page", (i+1).toString());
                             router.push(pathname + '?' +params.toString(), {scroll:false});
                         }} 
@@ -82,7 +83,7 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
                         className={`Pagination__Item ${pageLimitEnd > pages-1 ? "Pagination__Item--hidden" : ""}`}
                         onClick={() => {
                             if(currentPage === pages) return;
-                            const params = new URLSearchParams();
+                            const params = new URLSearchParams(searchParams);
                             params.set("page", (pages).toString());
                             router.push(pathname + '?' +params.toString(), {scroll:false});
                         }}>
@@ -93,7 +94,7 @@ export default function Pagination({page, pages}: {page:number,pages:number}){
 
                 <li className='Pagination__Item' onClick={() => {
                     if(currentPage === pages) return;
-                    const params = new URLSearchParams();
+                    const params = new URLSearchParams(searchParams);
                     params.set("page", (currentPage+1).toString());
                     router.push(pathname + '?' +params.toString(), {scroll:false});
                 }}>
