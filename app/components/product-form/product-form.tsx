@@ -10,7 +10,6 @@ export default function ProductForm({ action }: ProductFormProps)
 {
     return (
         <section aria-labelledby="form-header">
-            <h2 id="form-header" > Add/Edit product </h2>
 
             <Form action={action} className="product-form" aria-labelledby="form-header" >
 

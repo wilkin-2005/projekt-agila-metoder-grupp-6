@@ -31,6 +31,7 @@ export default async function EditProductPage( {params}: { params: Promise<{ id:
     return (
     <main className="EditProduct">
         <section className="centered-section">
+            <div className="EditProduct__Container">
 
             <header className="edit-page-header" >
                 {/* <img src={product.thumbnail} alt="" /> */}
@@ -45,6 +46,7 @@ export default async function EditProductPage( {params}: { params: Promise<{ id:
                 <EditProductForm product={product} />
 
             </section>
+            </div>
 
         </section>
     </main>
