@@ -3,8 +3,7 @@
 "use server";
 
 
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "next/navigation";
 
 
 // Maybe import from "products.ts" instead?
@@ -114,19 +113,18 @@ export async function editProductAction( formData: FormData )
     };
 
 
-    // POSTing the edited product to the API to be saved on server
+    // PUTing the edited product to the API to be saved on server
 
     // http://localhost:4000/products
     const response = await fetch(
-        `${BASE_URL}:${PORT}/products`, // ${id}` ??
+        `${BASE_URL}:${PORT}/products/${id}`,
         {
-            method: "POST",
+            method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(editedProduct)
         }
     );
     // Should have try/catch on above
 
-    // revalidatePath("/");
-    // redirect("/");
+    redirect("/");
 }
