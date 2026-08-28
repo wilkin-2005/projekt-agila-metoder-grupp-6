@@ -1,0 +1,26 @@
+
+.edit-page-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+}
+
+.edit-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-block-start: 1rem;
+    margin-inline: 1rem;
+
+    /* img {
+        max-height: 100px;
+    } */
+
+    a {
+        color: var(--icon-primary);
+    }
+}
+
+.edit-form-section {
+    margin-inline: 1rem;
+}

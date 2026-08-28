@@ -1,4 +1,4 @@
-import './page.css'
+
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -6,28 +6,47 @@ export const metadata: Metadata = {
   description: "Edit existing product on the website.",
 };
 
-export default async function Page({params}: {params: Promise<{ id: string }>}) {
-    const { id } = await params;
+import { notFound } from "next/navigation";
 
+import "./edit-product-page.css";
+import { getProductById } from "@/app/lib/products";
+import EditProductForm from "@/app/components/product-form/edit-product-form";
+
+
+//
+export default async function EditProductPage( {params}: { params: Promise<{ id: string }> } )
+{
     // get product with id from api here
 
-  return (
-    <main>
+    const { id: idStr } = await params;
+    const idNr: number = Number(idStr);
+
+    if(Number.isNaN(idNr)) notFound();
+
+    const product = await getProductById(idNr);
+
+    if (!product) notFound();
+
+
+    return (
+    <main className="EditProduct">
         <section className="centered-section">
-            <div className='EditProduct'>
-            <div className='EditProduct__Header'>
-        <h1 className="EditProduct__Title">
-            Edit product
-        </h1>
-        <a href='/'>Go back to products list</a>
-        </div>
-        <section>
-            {
-                /* add product form here */
-            }
-        </section>
-        </div>
+
+            <header className="edit-page-header" >
+                {/* <img src={product.thumbnail} alt="" /> */}
+
+                <h2 id="form-header" className="edit-page-title" > Edit product: {product.title} </h2>
+
+                <a href='/'>Go back to products list</a>
+            </header>
+
+            <section className="edit-form-section">
+
+                <EditProductForm product={product} />
+
+            </section>
+
         </section>
     </main>
-  );
+    );
 }
